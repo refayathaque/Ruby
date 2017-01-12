@@ -4,9 +4,9 @@ array = ['demo', 'none', 'tied', 'evil', 'dome','mode','live',
 hash = {}
 
 array.each do |element|
-  key = element.chars.sort.join
+  key = element.split(//).sort.join
   if hash.has_key?(key)
-    hash[key].push(element)
+    hash[key] << element
   else
     hash[key] = [element]
   end
