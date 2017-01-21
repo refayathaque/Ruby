@@ -6,8 +6,9 @@ puts "What is your name?"
 
 name = gets.chomp
 
-puts "Hello #{name}!" # can also do `puts "Hello " + name + "!"`
+puts "Hello #{name}!" # Can also do `puts "Hello " + name + "!"`
 # Outputs 'Hello Refayat!'
+
 puts "----"
 
 =begin Write a program that asks a user how old they are and then
@@ -45,3 +46,39 @@ puts age + 40
 # 47'...
 
 puts "----"
+
+=begin Add another section onto the first exercise that prints
+the name of the user 10 times. You must do this without explicitly
+writing the puts method 10 times in a row. Hint: you can use the
+`times` method to do something repeatedly.
+=end
+
+puts "What is your name?"
+
+name = gets.chomp
+
+10.times do # `Times` method (preceded by the # of times the block
+# is to be iterated) will repeat the block a set # of times
+  puts "#{name}" # Can also do `puts name`
+end
+
+# Outputs 'Refayat, Refayat...' (Total of ten times)
+
+puts "----"
+
+=begin Modify the first exercise again so that it first asks the
+user for their first name, saves it into a variable, and then does
+the same for the last name. Then outputs their full name all at once.
+=end
+
+puts "What is your first name?"
+
+first_name = gets.chomp
+
+puts "What is your last name?"
+
+last_name = gets.chomp
+
+puts "#{first_name} #{last_name}" # Can also do `puts first_name
+# + " " + last_name`
+# Outputs 'Refayat Haque'
