@@ -98,3 +98,38 @@ says("It'll take perserverance and unwavering commitment")
 # 'says()' prints "Hello Refayat." because we provided a
 # DEFAULT PARAMETER which is used when we call our METHOD
 # without an ARGUMENT.
+
+puts "----"
+
+# MUTATING THE CALLER
+
+=begin
+We are MUTATING THE CALLER when an ARGUMENT is changed
+permanently. *** Before proceeding it's important to keep
+in mind that METHOD ARGUMENTs are scoped at the METHOD
+level (within the block of the METHOD/INNER SCOPE). This
+is demonstrated in the example below.
+=end
+
+def some_method(number)
+  number = 7
+end
+
+a = 5
+some_method(a)
+puts a # Outputs 5 and NOT 7, because ARGUMENT was not
+# changed, OUTER SCOPE has no access to INNER SCOPE.
+
+=begin
+In our code above we passed 'a' to the 'some_method' METHOD.
+In 'some_method', the value of 'a' is assigned to the variable
+'number', and the variable is scoped at the METHOD level (within
+the block of the METHOD/INNER SCOPE). 'number' is reassigned
+the value "7" but it did not affect 'a's value because 'number'
+is scoped at the method level. 'puts a', being in the OUTER
+SCOPE, does not have access to the 'number' variable because
+it's in the INNER SCOPE. So 'puts a' outputs 5 because 'a = 5'
+is available to as it is in the OUTER SCOPE. *** METHODS
+cannot modify ARGUMENTs passed in to them permanently...
+UNLESS we MUTATE THE CALLER.
+=end
