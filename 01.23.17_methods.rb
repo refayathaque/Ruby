@@ -107,7 +107,7 @@ puts "----"
 We are MUTATING THE CALLER when an ARGUMENT is changed
 permanently. *** Before proceeding it's important to keep
 in mind that METHOD ARGUMENTs are scoped at the METHOD
-level (within the block of the METHOD/INNER SCOPE). This
+level (within the block of the METHOD/inner scope). This
 is demonstrated in the example below.
 =end
 
@@ -118,18 +118,66 @@ end
 a = 5
 some_method(a)
 puts a # Outputs 5 and NOT 7, because ARGUMENT was not
-# changed, OUTER SCOPE has no access to INNER SCOPE.
+# changed, outer scope has no access to inner scope.
+
+puts "----"
 
 =begin
 In our code above we passed 'a' to the 'some_method' METHOD.
 In 'some_method', the value of 'a' is assigned to the variable
 'number', and the variable is scoped at the METHOD level (within
-the block of the METHOD/INNER SCOPE). 'number' is reassigned
+the block of the METHOD/inner scope). 'number' is reassigned
 the value "7" but it did not affect 'a's value because 'number'
-is scoped at the method level. 'puts a', being in the OUTER
-SCOPE, does not have access to the 'number' variable because
-it's in the INNER SCOPE. So 'puts a' outputs 5 because 'a = 5'
-is available to as it is in the OUTER SCOPE. *** METHODS
+is scoped at the method level, 'a' could not be altered permanently.
+'puts a', being in the outer scope, does not have access to the
+'number' variable because it's in the inner scope. So 'puts a'
+outputs 5 because 'a = 5' (not altered permanently by the method)
+is available to as it is in the outer scope. *** METHODS
 cannot modify ARGUMENTs passed in to them permanently...
 UNLESS we MUTATE THE CALLER.
+=end
+
+=begin
+When we perform some specific action on the ARGUMENT we can
+permanently alter variables outside the method's scope, in other
+words, we can MUTATE THE CALLER. For example, let's take the
+variable 'a' which stores an array, and this variable is outside
+the METHOD's scope (in the outer scope).
+=end
+
+# Example of METHOD modifying ARGUMENT permanently
+
+a = [1, 2, 3, 4, 5]
+
+def mutate(array)
+  array.pop
+end
+
+p "Before mutate method #{a}" # Outputs [1, 2, 3, 4, 5]
+mutate(a)
+p "After mutate method #{a}" # Outputs [1, 2, 3, 4]
+
+puts "----"
+
+=begin
+In the above example we demonstrated MUTATING THE CALLER, or
+permanently altering a variable outside the method's scope. The 'pop'
+method MUTATEs THE CALLER, not all methods do however (as we shall
+see in the next example). METHODs which MUTATE THE CALLER, such as
+'pop' are exempted from the Variable Scope Rule. There is no way to
+know which methods are exempted and which are not, we will just have
+to learn along the way. So 'pop' MUTATEs THE CALLER and we can see
+this because after the argument was passed into the 'mutate' method
+what was outputted was an altered version of our [1, 2, 3, 4, 5]
+array, it became [1, 2, 3, 4]. So from this we can gather that 'pop'
+removes the last element in an array. More imporantly, 'pop' is a
+method that can MUTATE THE CALLER, it can permanently change a variable
+outside the method's scope. So now the variable 'a' is permanently
+altered outside the METHOD's scope, and is accesible to command
+'p "After mutate method #{a}"' which is in the outer scope.
+=end
+
+=begin
+Like previously mentioned, not all methods MUTATE THE CALLER.
+This is demonstrated below with an example using the 'last' method.
 =end
