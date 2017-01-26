@@ -223,9 +223,3 @@ outer scope.
 =end
 
 # Difference between 'puts' and 'return'
-
-
-
-
-
-=end
