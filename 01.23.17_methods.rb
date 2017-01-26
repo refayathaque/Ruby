@@ -150,7 +150,7 @@ the METHOD's scope (in the outer scope).
 a = [1, 2, 3, 4, 5]
 
 def mutate(array)
-  array.pop
+  array.pop # 'pop' removes the last element in an array
 end
 
 p "Before mutate method #{a}" # Outputs [1, 2, 3, 4, 5]
@@ -178,6 +178,54 @@ altered outside the METHOD's scope, and is accesible to command
 =end
 
 =begin
-Like previously mentioned, not all methods MUTATE THE CALLER.
-This is demonstrated below with an example using the 'last' method.
+Like previously mentioned, there are only a handful of METHODs which
+can MUTATE THE CALLER. Demonstrated below is an example using the
+'last' METHOD, it does not MUTATE THE CALLER and follows the Variable
+Scope Rule.
+=end
+
+b = [6, 7, 8, 9, 10]
+
+def no_mutate(array)
+  array.last # 'last' returns the last element in an array
+end
+
+p "Before no_mutate method: #{b}" # Outputs [6, 7, 8, 9, 10]
+no_mutate(b)
+p "After no_mutate method: #{b}" # Outputs [6, 7, 8, 9, 10]
+
+puts "----"
+
+=begin
+In the above example we did not MUTATE THE CALLER, in other words
+we did not permanently alter the variable outside the method's scope.
+So we know that the method 'last' does not MUTATE THE CALLER. 'last'
+returns the last element in an array but it does not have the ability
+to permanently alter a variable outside it's scope, or in the outer
+scope. For this reason when we called the array 'b' to be passed
+into the 'no_mutate' METHOD we got the same output as had we
+not passed 'b' into the METHOD, we got the the value of 'b' which
+is [6, 7, 8, 9, 10]. Now, if the METHOD 'last' had the cpability
+to MUTATE THE CALLER, the output for 'p "After no_mutate method: #{b}"'
+would have been "10". This METHOD 'last' holds true the Variable Scope
+Rule, which states that the inner scope has access to the outer but
+not vice versa. The 'no_mutate' METHOD does affect the variable 'b'
+with 'array.last', 'array.last' returns only the last element in the
+array. However, that does not influence the command 'p "After no_mutate
+method: #{b}"' because 'array.last' is a METHOD which does not MUTATE
+THE CALLER. The command 'p "After no_mutate method: #{b}"' is in the
+outer scope, and cannot access the whatever manipulation is occuring
+to the variable 'b' within the 'no_mutate' METHOD because that is
+scoped at the METHOD level, or in the inner scope. So the command
+'p "After no_mutate method: #{b}"' outputs what it has access to, the
+orginal version of variable 'b' ([6, 7, 8, 9, 10]) sitting in the
+outer scope.
+=end
+
+# Difference between 'puts' and 'return'
+
+
+
+
+
 =end
