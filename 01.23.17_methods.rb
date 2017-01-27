@@ -222,4 +222,41 @@ orginal version of variable 'b' ([6, 7, 8, 9, 10]) sitting in the
 outer scope.
 =end
 
-# Difference between 'puts' and 'return'
+# 'PUTS' VS 'RETURN'
+
+=begin
+Every METHOD RETURNs the evaluated result of the last line executed,
+and we will demonstrate this using the example from before which
+MUTATEs THE CALLER.
+=end
+
+a = [1, 2, 3]
+
+def mutate(array)
+  array.pop # 'pop' removes the last element in an array and RETURNs it
+end
+
+p "Before mutate method: #{a}"
+p mutate(a) # This is different from the example above, there is a 'p'
+# in front. The 'p' will print out the value of whatever is RETURNed.
+p "After mutate method: #{a}"
+
+=begin
+We're using the 'p' METHOD in this example to print out the value of
+whatever the 'mutate' METHOD RETURNs. The output will look as such:
+
+"Before mutate method: [1, 2, 3]"
+3
+"After mutate method: [1, 2]"
+
+Here is what happened in sequence: We output 'a' as we initially
+defined it ([1, 2, 3]). Then we output the value RETURNed by the
+'mutate' METHOD's 'array.pop' code, which was 3. Finally, we output
+the 'a' in it's permanently altered form as a result of the 'mutate'
+METHOD ([1, 2]). In the second line we are seeing "3" because the
+METHOD is RETURNing the result of 'array.pop' back to where it's being
+called from. Keep in mind that 'pop' is a METHOD that removes the
+last element of an array and RETURNs it, key here is 'RETURNs'.
+=end
+
+puts "----"
