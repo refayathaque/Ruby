@@ -339,3 +339,83 @@ is no explicit command of 'puts', 'p', or 'print'. However, what this
 shows is that that the 'RETURN' reserved word is NOT required to RETURN
 something from a METHOD. It's just a feature of Ruby.
 =end
+
+# CHAINING METHODS
+
+=begin
+Since we now know that every METHOD RETURNs something, we can try to
+CHAIN METHODs together. CHAINing METHODs together allow us to write
+very expressive and succint code. Let's look at the METHOD below.
+=end
+
+# Example of a CHAINed METHOD
+
+def add_three(n)
+  n + 3
+end
+
+add_three(5).times { puts 'this will print 8 times' } # We can keep
+# calling METHODs on the RETURNed value, in this case the RETURNed
+# value is 8. We are calling the 'times' METHOD on the RETURNed
+# value of 'add_three(5)', which is 8. 'times' iterates the given
+# block a certain number of times (number the block evaluates to).
+# 'add_three(5).times { puts 'this will print 8 times' }' is an
+# example of a CHAINed METHOD.
+
+puts "----"
+
+=begin
+If we were to run this in the terminal we would get 8 lines of "this
+will print 8 times", and that's it. We shouldn't expect an "8" at the
+end because "8" is simply being returned and not printed/output, as
+we did not include 'puts'/'print'/'p'. However, if we were to do this
+in PRY you would see the "8" below the 8 lines of "this will
+print 8 times". The above example was one example of a CHAINed METHOD,
+and there are other ways we can CHAIN METHODs, as we can see below.
+=end
+
+# Another example of a CHAINed METHOD
+
+"hi there".length.to_s # Will RETURN, not output, the string "8", not
+# the integer "8" but the STRING "8". If it was the integer "8" it
+# would not have been in double quotations when run on PRY. Since
+# it is in double quotations we know it's a STRING and not an integer.
+
+=begin
+In the above example the CHAINed METHOD has a string then two METHODs.
+The METHOD 'length' returns the character length of a string, and
+'to_s' converts the receiver to a string object.
+=end
+
+# Back to our original CHAINed METHOD example on line 351, except this
+# time around we will make one significant change.
+
+def add_three(n)
+  puts n + 3 # We're adding a 'puts' this time around. 'puts' will
+  # output the incremented value, instead of implicitly RETURNing it.
+end
+
+add_three(5).times { puts 'this will print 8 times' }
+
+puts "----"
+
+=begin
+We run the code in the terminal to find that we output "8", but
+now the CHAINed METHOD isn't working. We get the error message
+"undefined method `times' for nil:NilClass (NoMethodError)". What
+could have happened? According to the error message we got a 'nil'
+as a result of the addition of 'puts' in our 'add_three' METHOD block,
+and 'nil's don't know how to respond to a 'times' METHOD. Why did we
+get a 'nil'? To find out, let's try running the code again but this
+time without the 'times' METHOD attached, and in PRY so we can
+see why we're getting a 'nil'.
+=end
+
+# Done in PRY
+
+def add_three(n)
+  puts n + 3
+end
+
+add_three(5) # In PRY we get "8" as the output and our RETURNed value
+# is 'nil', but why are we getting 'nil'?
