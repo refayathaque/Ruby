@@ -278,7 +278,8 @@ METHOD in a variable called 'returned_value'. We then output the
 'returned_value' to see that it is 7. Nothing unexpected here. *** It's
 important to remember that Ruby METHODs always RETURN the evaluated
 result of the last line of the expression, UNLESS an explicit 'RETURN'
-comes before it. If we want to explicitly RETURN a value we must use
+comes before it (in which case nothing after the line with the 'RETURN'
+will be RETURNed). If we want to explicitly RETURN a value we must use
 the 'RETURN' keyword, and this is demonstrated below.
 =end
 
