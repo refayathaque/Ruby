@@ -396,9 +396,8 @@ def add_three(n)
   # output the incremented value, instead of implicitly RETURNing it.
 end
 
-add_three(5).times { puts 'this will print 8 times' }
-
-puts "----"
+ # add_three(5).times { puts 'this will print 8 times' } - [Commented
+ # out because it results in an error.]
 
 =begin
 We run the code in the terminal to find that we output "8", but
@@ -420,3 +419,46 @@ end
 
 add_three(5) # In PRY we get "8" as the output and our RETURNed value
 # is 'nil', but why are we getting 'nil'?
+
+=begin
+We just have to acknowledge that `puts` ALWAYS RETURNs 'nil'. If we
+try `print` we see that it ALSO RETURNs 'nil', but `p` does NOT RETURN
+'nil'. These are things we just have to remember going forward. So in
+our 'add_three' METHOD, since METHODs return the last line of the METHOD
+(unless we explicitly ask to RETURN something), our RETURN value ends
+up being what is RETURNed by 'puts n + 3', which is 'nil'. As a result
+of this 'nil' we cannot use the 'add_three' METHOD to CHAIN METHODs
+anymore. *** It's important to keep in mind that when CHAINing METHODs
+the entire CHAINed call will break down if we run into a 'nil'.
+=end
+
+puts "----"
+
+=begin
+So how do we fix the code above? One way we can circumvent the problem
+we ran into with 'nil' is by making sure that the line with `puts` is
+NOT the last line. We know that `puts` always RETURNs 'nil', and that
+the last line in a METHOD is always RETURNed unless explicitly asked
+to RETURN something in previous lines with the reserved word 'RETURN'.
+Therefore, we must make sure that `puts` is NOT being RETURNed, and we
+do that by simply making sure that the line with `puts` is NOT the last
+line.
+=end
+
+def add_three(n)
+  puts n + 3 # Does NOT RETURN 'nil' as it's not the last line
+  n + 3 # RETURNs "8", and we'll be able to see it only in PRY
+end
+
+add_three(5).times { puts 'this will print 8 times' }
+
+=begin
+It works this time around because we made sure that 'puts n + 3' was
+NOT the last line, and since it wasn't the last line 'puts n + 3' wasn't
+RETURNed, and therefore prevented us from having to deal with a 'nil'.
+When we have 'nil's our CHAINed calls break down and we get errors.
+'n + 3' is the last line in the block and it is implicitly RETURNed, as
+we can see if we were to run this in PRY.
+=end
+
+# METHODS AS ARGUMENTS
