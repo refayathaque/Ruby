@@ -38,7 +38,7 @@ inner scope, and that's why we needed the PARAMETER. It's
 important to give PARAMETERs meaningful and explicit names
 so it's clear to others reading our code. | ARGUMENTs are
 "passed" to a method when we call it, they are data sent
-to a method to be modified or used to return a specific
+to a method to be modified or used to RETURN a specific
 result. In our example the first ARGUMENT is "Hello Refayat",
 and it's "passed" to our METHOD 'says' when we call it.
 When we pass the string "Hello Refayat" into the METHOD
@@ -167,7 +167,7 @@ see in the next example). METHODs which MUTATE THE CALLER, such as
 'pop' are exempted from the Variable Scope Rule. There is no way to
 know which METHODs are exempted and which are not, we will just have
 to learn along the way. So 'pop' MUTATEs THE CALLER and we can see
-this because after the argument was passed into the 'mutate' method
+this because after the ARGUMENT was passed into the 'mutate' method
 what was outputted was an altered version of our [1, 2, 3, 4, 5]
 array, it became [1, 2, 3, 4]. So from this we can gather that 'pop'
 removes the last element in an array. More imporantly, 'pop' is a
@@ -187,7 +187,7 @@ Scope Rule.
 b = [6, 7, 8, 9, 10]
 
 def no_mutate(array)
-  array.last # 'last' returns the last element in an array
+  array.last # 'last' RETURNs the last element in an array
 end
 
 p "Before no_mutate method: #{b}" # Outputs [6, 7, 8, 9, 10]
@@ -200,7 +200,7 @@ puts "----"
 In the above example we did not MUTATE THE CALLER, in other words
 we did not permanently alter the variable outside the method's scope.
 So we know that the method 'last' does not MUTATE THE CALLER. 'last'
-returns the last element in an array but it does not have the ability
+RETURNs the last element in an array but it does not have the ability
 to permanently alter a variable outside it's scope, or in the outer
 scope. For this reason when we called the array 'b' to be passed
 into the 'no_mutate' METHOD we got the same output as had we
@@ -210,7 +210,7 @@ to MUTATE THE CALLER, the output for 'p "After no_mutate method: #{b}"'
 would have been "10". This METHOD 'last' holds true the Variable Scope
 Rule, which states that the inner scope has access to the outer but
 not vice versa. The 'no_mutate' METHOD does affect the variable 'b'
-with 'array.last', 'array.last' returns only the last element in the
+with 'array.last', 'array.last' RETURNs only the last element in the
 array. However, that does not influence the command 'p "After no_mutate
 method: #{b}"' because 'array.last' is a METHOD which does not MUTATE
 THE CALLER. The command 'p "After no_mutate method: #{b}"' is in the
@@ -274,8 +274,8 @@ puts "----"
 
 =begin
 In the above example we're saving the RETURNed value of the 'add_three'
-METHOD in a variable called 'returned_value'. We then output the
-'returned_value' to see that it is 7. Nothing unexpected here. *** It's
+METHOD in a variable called 'RETURNed_value'. We then output the
+'RETURNed_value' to see that it is 7. Nothing unexpected here. *** It's
 important to remember that Ruby METHODs always RETURN the evaluated
 result of the last line of the expression, UNLESS an explicit 'RETURN'
 comes before it (in which case nothing after the line with the 'RETURN'
@@ -368,7 +368,7 @@ puts "----"
 =begin
 If we were to run this in the terminal we would get 8 lines of "this
 will print 8 times", and that's it. We shouldn't expect an "8" at the
-end because "8" is simply being returned and not printed/output, as
+end because "8" is simply being RETURNed and not printed/output, as
 we did not include 'puts'/'print'/'p'. However, if we were to do this
 in PRY you would see the "8" below the 8 lines of "this will
 print 8 times". The above example was one example of a CHAINed METHOD,
@@ -384,7 +384,7 @@ and there are other ways we can CHAIN METHODs, as we can see below.
 
 =begin
 In the above example the CHAINed METHOD has a string then two METHODs.
-The METHOD 'length' returns the character length of a string, and
+The METHOD 'length' RETURNs the character length of a string, and
 'to_s' converts the receiver to a string object.
 =end
 
@@ -424,7 +424,7 @@ add_three(5) # In PRY we get "8" as the output and our RETURNed value
 We just have to acknowledge that `puts` ALWAYS RETURNs 'nil'. If we
 try `print` we see that it ALSO RETURNs 'nil', but `p` does NOT RETURN
 'nil'. These are things we just have to remember going forward. So in
-our 'add_three' METHOD, since METHODs return the last line of the METHOD
+our 'add_three' METHOD, since METHODs RETURN the last line of the METHOD
 (unless we explicitly ask to RETURN something), our RETURN value ends
 up being what is RETURNed by 'puts n + 3', which is 'nil'. As a result
 of this 'nil' we cannot use the 'add_three' METHOD to CHAIN METHODs
@@ -450,7 +450,7 @@ def add_three(n)
   n + 3 # RETURNs "8", and we'll be able to see it only in PRY
 end
 
-add_three(5).times { puts 'this will print 8 times' }
+add_three(5).times { puts 'this will print 8 times' } # Outputs 8 times
 
 =begin
 It works this time around because we made sure that 'puts n + 3' was
@@ -461,4 +461,73 @@ When we have 'nil's our CHAINed calls break down and we get errors.
 we can see if we were to run this in PRY.
 =end
 
+puts "----"
+
 # METHODS AS ARGUMENTS
+
+# Example 1, we will define 'add' and 'subtract' METHODs and call them.
+
+def add(a, b)
+  a + b
+end
+
+def subtract(c, d)
+  c - d
+end
+
+p add(17, 3) # Outputs 20
+p subtract(27, 7) # Outputs 20
+
+=begin
+The example above looks straight-forward, but what isn't (and can be
+quite confusing if not done correctly) is that Ruby allows us to pass
+METHOD calls as an ARGUMENT to other METHODs. In other words, if we
+wanted, we can pass 'add(17, 3)' and 'subtract(27, 7)' as ARGUMENTs
+to ANOTHER METHOD. We will do this in the example below.
+=end
+
+puts "----"
+
+# Example 2, passing METHOD calls as an ARGUMENT to other METHODs.
+
+def multiply(e, f)
+  e * f
+end
+
+p multiply(add(17, 3), subtract(27, 7)) # Outputs 400
+
+puts "----"
+
+# Example 3, similar to above but more complicated.
+
+p add(subtract(27, 7), multiply(subtract(27, 7), add(17, 3)))
+# Outputs 420
+
+=begin
+Let's break down the complicated example above. First we passed to the
+'add' METHOD two ARGUMENTs: 'subtract(27, 7) and 'multiply(subtract(27,
+7), add(17, 3))'. The first ARGUMENT, the 'subtract' METHOD, RETURNs 20.
+The second ARGUMENT, the 'multiply' METHOD call, actually has two
+ARGUMENTs: 'subtract(25, 7)' and 'add(17, 3)', and what this whole
+thing RETURNs is 20 * 20, or 400. Finally, 'add(20, 400)' and what is
+RETURNed (then output since we have the 'p') is 420. *** A very
+important thing to be aware of when using nested METHODs is the use
+of parenthesis, use them correctly to avoid confusion.
+=end
+
+=begin
+We see that METHOD calls always RETURN a value, and we can pass that
+METHOD call as an ARGUMENT to another METHOD based on the RETURNed
+value. So, it is crucial to know what our defined METHODs are RETURNing,
+because in the final analysis that's what is actually being passed as
+ARGUMENTs to other METHODs.
+=end
+
+# SUMMARY
+
+=begin
+Knowing the difference between `puts` and `return` will help us avoid
+the common beginners' pitfalls. Knowing how and when to use METHOD
+CHAINing will help us better read code and write more succint code, but
+we must be careful about thos 'nil's.
+=end
