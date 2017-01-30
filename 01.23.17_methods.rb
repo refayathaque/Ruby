@@ -508,7 +508,7 @@ Let's break down the complicated example above. First we passed to the
 'add' METHOD two ARGUMENTs: 'subtract(27, 7) and 'multiply(subtract(27,
 7), add(17, 3))'. The first ARGUMENT, the 'subtract' METHOD, RETURNs 20.
 The second ARGUMENT, the 'multiply' METHOD call, actually has two
-ARGUMENTs: 'subtract(25, 7)' and 'add(17, 3)', and what this whole
+ARGUMENTs: 'subtract(27, 7)' and 'add(17, 3)', and what this whole
 thing RETURNs is 20 * 20, or 400. Finally, 'add(20, 400)' and what is
 RETURNed (then output since we have the 'p') is 420. *** A very
 important thing to be aware of when using nested METHODs is the use
