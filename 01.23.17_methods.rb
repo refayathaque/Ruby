@@ -132,7 +132,7 @@ is scoped at the method level, 'a' could not be altered permanently.
 'puts a', being in the outer scope, does not have access to the
 'number' variable because it's in the inner scope. So 'puts a'
 outputs 5 because 'a = 5' (not altered permanently by the method)
-is available to as it is in the outer scope. *** METHODS
+is available to as it is in the outer scope. *** METHODs
 cannot modify ARGUMENTs passed in to them permanently...
 UNLESS we MUTATE THE CALLER.
 =end
@@ -162,10 +162,10 @@ puts "----"
 =begin
 In the above example we demonstrated MUTATING THE CALLER, or
 permanently altering a variable outside the method's scope. The 'pop'
-method MUTATEs THE CALLER, not all methods do however (as we shall
+method MUTATEs THE CALLER, not all METHODs do however (as we shall
 see in the next example). METHODs which MUTATE THE CALLER, such as
 'pop' are exempted from the Variable Scope Rule. There is no way to
-know which methods are exempted and which are not, we will just have
+know which METHODs are exempted and which are not, we will just have
 to learn along the way. So 'pop' MUTATEs THE CALLER and we can see
 this because after the argument was passed into the 'mutate' method
 what was outputted was an altered version of our [1, 2, 3, 4, 5]
@@ -260,3 +260,82 @@ last element of an array and RETURNs it, key here is 'RETURNs'.
 =end
 
 puts "----"
+
+# Another RETURN example
+
+def add_three(number)
+  number + 3
+end
+
+returned_value = add_three(4)
+puts returned_value
+
+puts "----"
+
+=begin
+In the above example we're saving the RETURNed value of the 'add_three'
+METHOD in a variable called 'returned_value'. We then output the
+'returned_value' to see that it is 7. Nothing unexpected here. *** It's
+important to remember that Ruby METHODs always RETURN the evaluated
+result of the last line of the expression, UNLESS an explicit 'RETURN'
+comes before it. If we want to explicitly RETURN a value we must use
+the 'RETURN' keyword, and this is demonstrated below.
+=end
+
+def add_three(number)
+  return number + 3 # Added 'RETURN' to 'number + 3'
+end
+
+returned_value = add_three(4)
+puts returned_value
+
+puts "----"
+
+# Over here we got the same "7" as the example preceding. What will
+# we get if we changed it again? Let's try this below.
+
+def add_three(number)
+  return number + 3
+  number + 4 # Added this new line to the METHOD's block
+end
+
+returned_value = add_three(4)
+puts returned_value
+
+puts "----"
+
+=begin
+Okay, so we got the same "7" as the previous two examples, despite
+adding in the 'number + 4' line to the METHOD's block. Why is this?
+This happened because when you have 'RETURN' in the block the METHOD
+will ONLY execute the part with the 'RETURN' keyword and nothing else.
+When we inserted the 'RETURN' keyword in the middle of the METHOD,
+it just RETURNed the evaluated result of 'number + 3' (= 7) without
+executing the next line which is 'number + 4'.
+=end
+
+=begin
+One of the key things we must take away from this is that the 'RETURN'
+reserved word is NOT required to RETURN something from a METHOD. It's
+just a feature of Ruby. Let's look at this in the example below.
+=end
+
+def just_assignment(number)
+  foo = number + 3
+end
+
+just_assignment(2) # In PRY this will RETURN "5" and we can see it, but
+# in the terminal it won't output anything because there isn't the
+# explicit 'puts', 'print', or 'p'.
+
+=begin
+Running the above METHOD as part of 'ruby 01.23.17_methods.rb' won't
+output anything to the terminal, because we have not included a 'puts',
+'p', or 'print' to our call 'just_assignment(2)'. However, if we were
+to run this in the PRY Runtime Developer Console then "5" would be
+RETURNed. When you run this file in the terminal "5" is being RETURNed,
+but you cannot see it because it's not being printed/output, as there
+is no explicit command of 'puts', 'p', or 'print'. However, what this
+shows is that that the 'RETURN' reserved word is NOT required to RETURN
+something from a METHOD. It's just a feature of Ruby.
+=end
