@@ -132,3 +132,22 @@ program will look to 'z', if 'z' is true then '# do somthing' will be
 executed (by virtue of ||), if 'z' is false then the code will exit
 the if statement.
 =end
+
+# TERNARY OPERATOR
+
+=begin
+Ruby has an option for short and concise 'if' CONDITIONAL statements.
+The TERNARY OPERATOR makes quick 'if/else' statements easy and keeps
+everything in one line. It uses a combination of '?' and ':', let's
+see this in action below.
+
+[1] pry(main)> true ? "True" : "False"
+=> "True"
+[2] pry(main)> false ? "True" : "False"
+=> "False"
+
+So what happens? Ruby first looks at what is to the left of the '?',
+if it's 'true' it goes to whatever is to the LEFT of the ':' and
+executes it, if it's 'false' it goes to whatever is to the RIGHT
+of the ':' and executes it. TERNARY OPERATORs will come to our aid later
+on as we gain more familiarity with 'if' statements.
