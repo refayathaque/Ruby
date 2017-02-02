@@ -217,3 +217,43 @@ puts answer
 
 # In the above example we did not give the CASE STATEMENT an argument,
 # but we added it as a boolean to 'when'.
+
+# TRUE AND FALSE
+
+=begin
+Let's go back to 'if' statements and think about them. We notice that
+after 'if' and 'elsif' we always have to put an expression which
+evaluates to a BOOLEAN value: 'true' or 'false'. The code below the 'if'
+and 'elsif' will be executed if the BOOLEAN value is 'true'. Therefore,
+it's safe to assume that in Ruby every expression evaluates to 'true'
+when used in flow control, except for 'false' and 'nil'. Let's see this.
+=end
+
+a = 5
+if a
+  puts "how can this be true?"
+else
+  puts "it is not true"
+end # Outputs "how can this be true?"
+
+puts "----"
+
+a = "false"
+if a
+  puts "how can this be true?"
+else
+  puts "it is not true"
+end # ALSO Outputs "how can this be true?", we'll get the same thing
+# for any integer/float/string we assign to the variable 'a'.
+
+puts "----"
+
+# We can even write code like this:
+
+if a = 5
+  puts "how can this be true?"
+else
+  puts "it is not true"
+end # Outputs "how can this be true?" here ALSO. Here we just assigned
+# the variable 'a' the value '5', and that will always evaluate to
+# 'true'.
