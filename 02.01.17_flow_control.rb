@@ -151,3 +151,69 @@ if it's 'true' it goes to whatever is to the LEFT of the ':' and
 executes it, if it's 'false' it goes to whatever is to the RIGHT
 of the ':' and executes it. TERNARY OPERATORs will come to our aid later
 on as we gain more familiarity with 'if' statements.
+
+# CASE STATEMENT
+
+=begin
+CASE STATEMENTs are similar to an 'if' statement but has a slightly
+different interface. They use the reserved words 'case', 'when', 'else',
+and 'end'. We create one by first definining a case and then evaluating
+the value of the CASE and what operation to complete if that case is
+true. Let's see how this works.
+=end
+
+a = 5
+
+case a
+when 5
+  puts "a is 5"
+when 6
+  puts "a is 6"
+else
+  puts "a is neither 5, nor 6"
+end
+
+# Looks similar to one of our previous 'if/elsif/else' statements right?
+
+puts "----"
+
+# What's cool is that we can also save the result of a CASE STATEMENT
+# into a variable, so let's refactor our code above to do that, let's
+# refactor so that we don't have to have 'puts' in all three lines.
+
+a = 6
+
+answer = case a
+when 5
+  "a is 5"
+when 6
+  "a is 6"
+else
+  "a is neither 5, nor 6"
+end
+
+puts answer
+
+# By assigning the case to variable 'answer' we saved ourselves from
+# writing out 'puts' in every line. We just called the variable with
+# 'puts' after ending the CASE STATEMENT.
+
+puts "----"
+
+# We can also execute a CASE STATEMENT without giving an argument.
+
+a = 4
+
+answer = case
+when a == 5
+  "a is 5"
+when a == 6
+  "a is 6"
+else
+  "a is neither 5, nor 6"
+end
+
+puts answer
+
+# In the above example we did not give the CASE STATEMENT an argument,
+# but we added it as a boolean to 'when'.
