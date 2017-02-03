@@ -60,3 +60,22 @@ end
 allcaps(wordorphrase) # We're passing the argument into our method above
 
 puts "----"
+
+# A refactored way of doing the example above
+
+puts "Enter a word or phrase"
+wordorphrase = gets.chomp
+
+def allcaps(string)
+  if string.length > 10
+    string.upcase
+  else
+    string
+  end
+end
+
+puts allcaps(wordorphrase) # Instead of having 'puts' in the 'allcaps'
+# method, we just called the method 'allcaps' and passed the argument
+# 'wordorphrase' with a 'puts' in front.
+
+puts "----"
