@@ -79,3 +79,176 @@ puts allcaps(wordorphrase) # Instead of having 'puts' in the 'allcaps'
 # 'wordorphrase' with a 'puts' in front.
 
 puts "----"
+
+# Exercise 3
+
+=begin
+Write a program that takes a number from the user between 0 and 100 and
+reports back whether the number is between 0 and 50, 51 and 100, or above
+100.
+=end
+
+=begin
+Let's write some pseudo-code before starting. So our code will need to
+begin with a user input, and since we will be collecting an integer we
+must take that into account when writing the user input part of the
+code. Then we come to the main part of our code, and here we know for
+certain that it will be an 'if/else' conditional with 'elsifs' in there
+as well because we are looking for three distinct cases in which we will
+need to output a message. Keep in mind, we can use a 'method' to craft
+our code, or not, we can have it be simple, it's upto us. :)
+=end
+
+puts "Please enter a number between 0 and 100"
+number = gets.chomp.to_i # .to_i converts a string to an integer
+
+if number >= 0 && number <= 50
+  puts "Your number is between 0 and 50"
+elsif number >= 51 && number <= 100
+  puts "Your number is between 51 and 100"
+elsif number > 100
+  puts "Your number is greater than 100"
+else
+  puts "Your number is negative"
+end
+
+puts "----"
+
+# We will refactor the code we just wrote above as a 'method'
+
+puts "Please enter a number between 0 and 100"
+number = gets.chomp.to_i
+
+def numbercheck(integer)
+  if integer >= 0 && integer <= 50
+    puts "Your number is between 0 and 50"
+  elsif integer >= 51 && integer <= 100
+    puts "Your number is between 51 and 100"
+  elsif integer > 100
+    puts "Your number is greater than 100"
+  else
+    puts "Your number is negative"
+  end
+end
+
+numbercheck(number)
+
+puts "----"
+
+=begin
+So we established ranges using the inequality and the '&&' operators
+above, but we didn't have to do that. There's a simpler way with ONLY
+the inequality operators, and we can see that below.
+=end
+
+puts "Please enter a number between 0 and 100"
+number = gets.chomp.to_i
+
+if number < 0
+  puts "#{number} is negative" # String interpolation...
+elsif number <= 50
+  puts "#{number} is between 0 and 50"
+elsif number <= 100
+  puts "#{number} is between 51 and 100"
+else
+  puts "#{number} is greater than 100"
+end
+
+puts "----"
+
+# Exercise 5
+
+=begin
+Rewrite your program from exercise 3 using a case statement, and wrap
+this new case statement in a method.
+=end
+
+# Exercise 3 as a Case Statement
+
+puts "Please enter a number between 0 and 100"
+number = gets.chomp.to_i
+
+answer = case
+when number < 0
+  "#{number} is negative"
+when number <= 50
+  "#{number} is between 0 and 50"
+when number <= 100
+  "#{number} is between 51 and 100"
+else
+  "#{number} is greater than 100"
+end
+
+puts answer
+
+puts "----"
+
+# Can also be refactored using our other version with the '&&' operators
+
+puts "Please enter a number between 0 and 100"
+number = gets.chomp.to_i
+
+answer = case
+when number >= 0 && number <= 50
+  "Your number is between 0 and 50"
+when number >= 51 && number <= 100
+  "Your number is between 51 and 100"
+when number > 100
+  "Your number is greater than 100"
+else
+  "Your number is negative"
+end
+
+puts answer
+
+puts "----"
+
+# Case Statements wrapped in a 'method'
+
+puts "Please enter a number between 0 and 100"
+integer = gets.chomp.to_i # We had to change the variable name since
+# we are wrapping the case statement in a 'method'. Using 'number'
+# wouldn't work as we would be passing that in as the parameter, which
+# would've ALSO be 'number'. So we changed the variable to 'integer'.
+
+def casestatement(number)
+answer = case
+  when number < 0
+    "#{number} is negative"
+  when number <= 50
+    "#{number} is between 0 and 50"
+  when number <= 100
+    "#{number} is between 51 and 100"
+  else
+    "#{number} is greater than 100"
+  end
+puts answer # Note how we just moved this INTO the method.
+end
+
+casestatement(integer)
+
+puts "----"
+
+# Below is the Case Statement based off the version with the '&&'
+# operators wrapped in a 'method'.
+
+puts "Please enter a number between 0 and 100"
+integer = gets.chomp.to_i
+
+def casestatement(number)
+answer = case
+  when number >= 0 && number <= 50
+    "Your number is between 0 and 50"
+  when number >= 51 && number <= 100
+    "Your number is between 51 and 100"
+  when number > 100
+    "Your number is greater than 100"
+  else
+    "Your number is negative"
+  end
+puts answer
+end
+
+casestatement(integer)
+
+puts "----"
