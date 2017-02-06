@@ -236,7 +236,7 @@ puts "Please enter a number between 0 and 100"
 integer = gets.chomp.to_i
 
 def casestatement(number)
-answer = case
+case
   when number >= 0 && number <= 50
     "Your number is between 0 and 50"
   when number >= 51 && number <= 100
@@ -246,10 +246,14 @@ answer = case
   else
     "Your number is negative"
   end
-puts answer
 end
 
-casestatement(integer)
+# In this example we removed 'puts answer' from the method (which
+# also meant deleting the variable 'answer' assigned to 'case'),
+# and we are placing 'puts' (below) when we pass an argument to the
+# method.
+
+puts casestatement(integer)
 
 puts "----"
 
@@ -262,3 +266,25 @@ else', but we didn't know that we can have a sub-section within an
 'else', IE we can have an 'if/else' WITHIN an 'else' in a Case
 Statement. We will demonstrate both these new things below.
 =end
+
+# 02.05.17 - Code below DOESN'T work...
+
+puts "Please enter a number between 0 and 100"
+integer = gets.chomp.to_i
+
+def casestatement(number)
+case
+when number == 0..50
+    "Your number is between 0 and 50"
+  when number == 51..100
+    "Your number is between 51 and 100"
+  else
+    if number < 0
+      "Your number is negative"
+    else
+      "Your number is greater than 100"
+    end
+  end
+end
+
+puts casestatement(integer)
