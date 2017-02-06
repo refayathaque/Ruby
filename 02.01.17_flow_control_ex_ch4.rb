@@ -252,3 +252,13 @@ end
 casestatement(integer)
 
 puts "----"
+
+=begin
+There is actually ANOTHER way to do a Case Statement, and that's
+using things we haven't yet tried. 1) We can set up ranges using
+'..'. For example, instead of 'number >= 0 && number <= 50', we can
+do '0..50'. 2) We know Case Statements are made up of 'when and
+else', but we didn't know that we can have a sub-section within an
+'else', IE we can have an 'if/else' WITHIN an 'else' in a Case
+Statement. We will demonstrate both these new things below.
+=end
