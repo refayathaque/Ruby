@@ -267,19 +267,19 @@ else', but we didn't know that we can have a sub-section within an
 Statement. We will demonstrate both these new things below.
 =end
 
-# 02.05.17 - Code below DOESN'T work...
-
 puts "Please enter a number between 0 and 100"
 integer = gets.chomp.to_i
 
 def casestatement(number)
-case
-when number == 0..50
+case number # Parameter is within the case statement definition, not
+  # in the 'when' lines below.
+when 0..50
     "Your number is between 0 and 50"
-  when number == 51..100
+  when 51..100
     "Your number is between 51 and 100"
   else
-    if number < 0
+    if number < 0 # Parameter has to be here because it's the only
+      # way for this inequality operator to be functional.
       "Your number is negative"
     else
       "Your number is greater than 100"
@@ -288,3 +288,15 @@ when number == 0..50
 end
 
 puts casestatement(integer)
+
+=begin
+In the above example we set the 'method' parameter (number) at the
+top of the case statement when defining it. The reason we did this is
+because we cannot use the parameter with a range, IE we cannot do
+'when number 0..50'. By setting the parameter with 'case' in the case
+statement's head we tell the case statement to use that parameter in
+all the 'when/else' lines. So you might ask, "if that is the case why
+do we have a 'number' in the else line's sub-section?". We needed the
+'number' before the '<' operator because you need a parameter for that
+kind of an operator to work.
+=end
