@@ -35,8 +35,9 @@ that will stop the LOOP.
 i = 0 # Local variable is assigned Fixnum 0 (All operators with '='
 # are assigment operators)
 loop do
-  i = i + 1 # REASSIGNED integer, then returns 1
-  puts i # Prints i to the console and returns 'nil'
+  i = i + 1 # 'i' is now being REASSIGNED the value of 'i + 1', returning
+  # the new REASSIGNED value of 'i'.
+  puts i # Prints REASSIGNED 'i' to the console, returning 'nil'
   break # Breaks out of the loop
 end
 
@@ -47,8 +48,9 @@ puts "----"
 # all in one line.
 
 i = 0
-loop { i += 1; puts i; break } # 'i += 1' is RETURNING A NEW INTEGER.
-# 'puts i' is a method PRINTING the REASSIGNMENT of variable 'i = 0'.
+loop { i += 1; puts i; break }
 
-# Comments above next to each line of code are just drafts, will need
-# to refine and improve on later - 02.06.15
+# We won't ever write code like what we have above in the curly braces,
+# there are too many functions to put in a one-liner curly brace block.
+# For the example above it's best to use 'do...end', we should limit
+# our use of one-liner curly brace blocks for code with just one function.
