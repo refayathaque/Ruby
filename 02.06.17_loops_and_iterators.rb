@@ -126,3 +126,35 @@ loop do
 end
 
 # WHILE LOOPS
+
+=begin
+WHILE LOOPS are given parameters that evaluates to a boolean ('true' or
+'false'). Once the boolean becomes 'false', the WHILE LOOP is not
+executed again, and the program continues after the WHILE LOOP. Our
+code within the WHILE LOOP can have any kind of logic we want performed.
+Let's demonstrate a WHILE LOOP by writing a program which will countdown
+from a number provided by the user, and will print each number to the
+screen as it counts down to 0.
+=end
+
+puts "Enter a number, then see the countdown to 0"
+number = gets.chomp.to_i
+
+while number >= 0
+  puts number
+  number = number - 1 # Can also be refactored as 'number -= 1'
+end
+
+puts "Lift Off!"
+
+=begin
+Our program above initially evaluates the line 'number >= 0', and if the
+number we entered makes it evaluate to 'true' then the program enters
+the LOOP. 'puts number' is executed and then 'number = number - 1', then
+the program goes back to the top with the REASSIGNED value of 'number'
+and evaluates 'number >= 0' again. This process is repeated until the
+value of 'number' is no longer greater than or equal to 0
+('number >= 0' evaluates to 'false'). It then exits the LOOP and continues
+with the rest of the program, in our case, the program goes on to print
+"Lift Off!"
+=end
