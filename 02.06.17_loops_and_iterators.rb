@@ -10,7 +10,7 @@ LOOPs, 'do/while' LOOPs, and 'for' LOOPs.
 # SIMPLE LOOP
 
 =begin
-The easiest way to begin a loop in Ruby is using the keyword 'LOOP'.
+The easiest way to begin a LOOP in Ruby is using the keyword 'LOOP'.
 'LOOP' takes a block, denoted by '{...}' or 'do...end'. The LOOP
 will execute any code within the block, until you manually intervene
 with 'CTRL + c' (or insert a 'break' statement inside the block), and
@@ -19,7 +19,7 @@ that will stop the LOOP.
 
 # Example of a LOOP
 
-# loop do
+# LOOP do
   # puts "This will continue to print repeatedly until we do CTRL + c"
 # end
 
@@ -38,7 +38,7 @@ loop do
   i = i + 1 # 'i' is now being REASSIGNED the value of 'i + 1', returning
   # the new REASSIGNED value of 'i'.
   puts i # Prints REASSIGNED 'i' to the console, returning 'nil'
-  break # Breaks out of the loop
+  break # Breaks out of the LOOP
 end
 
 puts "----"
@@ -54,3 +54,75 @@ loop { i += 1; puts i; break }
 # there are too many functions to put in a one-liner curly brace block.
 # For the example above it's best to use 'do...end', we should limit
 # our use of one-liner curly brace blocks for code with just one function.
+
+=begin
+'break' permits us to exit out of a LOOP at any point, so any code after
+a 'break' won't be executed. *** 'break' won't exit out of the program,
+but will only exit the LOOP and execution of whatever is after the LOOP
+will continue.
+=end
+
+# We can add conditions within a LOOP, we will demonstrate this by having
+# a LOOP print all even number from 0 to 20.
+
+i = 0
+loop do
+  i += 2
+  puts i
+  break if i == 10 # This conditional executed the 'break' on the LOOP's
+  # 5th iteration
+end
+
+# The LOOP block above can be refactored
+
+i = 0
+loop do
+  i += 2
+  puts i
+  if i == 10
+    break
+  end # Because in the line above we have an 'if' statement
+end
+
+=begin
+Notice above that we needed to have an 'end' after the line with 'break',
+we needed to do this because of the 'if' statment in line 82. However if
+we refactored this code like how it was originally starting from line 68
+then we wouldn't need an 'end' after the line with 'break if i == 10'.
+This is important to keep in mind, you will need an 'end' if you decide
+to write your code with the 'if' conditional preceding the 'break' or
+* 'next'.
+=end
+
+=begin
+Similar to how we used 'break' to exit a loop, we can use the keyword
+'next' to skip the rest of the current iteration and begin executing the
+next iteration. To demonstrate this we will use the example above, and
+we will skip the '4'.
+=end
+
+i = 0
+loop do
+  i += 2
+  next if i == 4 # This conditional executed the 'next' on the LOOP's
+  # 2nd iteration, causing the code below to be skipped and going on
+  # to the 3rd iteration, that is why '4' was not printed.
+  puts i
+  break if i == 10
+end
+
+# Refactored
+
+i = 0
+loop do
+  i += 2
+  if i == 4
+    next # *
+  end
+  puts i
+  if i == 10
+    break # *
+  end
+end
+
+# WHILE LOOPS
