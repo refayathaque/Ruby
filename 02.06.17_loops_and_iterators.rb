@@ -179,7 +179,7 @@ will change so that the UNTIL LOOP stops executing once it becomes 'true'.
 puts "Enter a number, then see the countdown to 0"
 number = gets.chomp.to_i
 
-until number <= -1 # Operator is simple now the OPPOSITE of what we have
+until number <= -1 # Operator is simply now the OPPOSITE of what we have
   # above with the WHILE LOOP, because here we need the OPPOSITE boolean
   # value. (We use -1 here instead of 0 for math-based
   # reasons, -1 allows us to print '0' to the screen)
@@ -196,3 +196,38 @@ and UNTIL LOOPs stop executing once the boolean evaluats to 'true'.
 There will be times when using UNTIL, instead of WHILE, will make our
 code more readable and logical.
 =end
+
+# DO/WHILE LOOPS
+
+=begin
+DO/WHILE LOOPs are similar to UNTIL LOOPs (in that they also stop executing
+the LOOP once the given parameter evaluating to a boolean is 'true'), with
+the only difference being that the expression within the LOOP method gets
+executed one time PRIOR to the conditional check determining whether the
+code should be executed. In a DO/WHILE loop the conditional check is at
+the end of the loop, as opposed to the beginning. A classic use case for
+a DO/WHILE LOOP is when we want to ask a user if he or she wants an action
+performed again, and we keep prompting if they say 'Yes'. It's a classic
+use case for a DO/WHILE LOOP since we want to repeatedly perform an action
+based on some condition, but we want the action to be executed at least
+one time no matter what. Let's see this in action below.
+=end
+
+loop do
+  puts "Should I ask you this again?"
+  answer = gets.chomp
+  if answer != 'yes' # Like an UNTIL LOOP, the 'break' executes once this
+    # conditional is 'true'.
+    break
+  end
+end
+
+=begin
+Note that we've used a simple LOOP method, however, the condition to
+'break' out of the LOOP happens at the end, therefore ensuring that the
+LOOP is executed AT LEAST ONCE. In other words, the user is asked the
+question before his or her response is processed by the rest of the
+expression.
+=end
+
+# FOR LOOPS
