@@ -166,3 +166,33 @@ with the rest of the program, in our case, the program goes on to print
 # of the expression, UNLESS an explicit return comes BEFORE it.
 
 # UNTIL LOOPS
+
+=begin
+UNTIL LOOPS are simply the opposite of WHILE LOOPs. Once the boolean
+becomes 'true', the UNTIL LOOP is not executed again, and the program
+continues after the UNTIL LOOP. We can substitute this in to phrase
+a problem in a different way, so let's do that with our WHILE LOOP
+example above. Note how our given parameters evaluateing to a boolean
+will change so that the UNTIL LOOP stops executing once it becomes 'true'.
+=end
+
+puts "Enter a number, then see the countdown to 0"
+number = gets.chomp.to_i
+
+until number <= -1 # Operator is simple now the OPPOSITE of what we have
+  # above with the WHILE LOOP, because here we need the OPPOSITE boolean
+  # value. (We use -1 here instead of 0 for math-based
+  # reasons, -1 allows us to print '0' to the screen)
+  puts number
+  number -= 1 # Refactored from 'number = number - 1'
+end
+
+puts "Lift Off!"
+
+=begin
+So we know that WHILE and UNTIL LOOPs are simply the opposites of each
+other, WHILE LOOPs stop executing once the boolean evaluates to 'false',
+and UNTIL LOOPs stop executing once the boolean evaluats to 'true'.
+There will be times when using UNTIL, instead of WHILE, will make our
+code more readable and logical.
+=end
