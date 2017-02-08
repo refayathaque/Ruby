@@ -4,7 +4,7 @@
 Some operations in Ruby are best served with a LOOP. What is a LOOP?
 A LOOP is the repetitive execution of a code for a specified amount
 of repeitions, or until a certain condition is met. There are 'while'
-LOOPs, 'do/while' LOOPs, and 'for' LOOPs.
+LOOPs, 'do/while' LOOPs, and 'for' LOOPs. *** LOOP is a method.
 =end
 
 # SIMPLE LOOP
@@ -158,3 +158,11 @@ value of 'number' is no longer greater than or equal to 0
 with the rest of the program, in our case, the program goes on to print
 "Lift Off!"
 =end
+
+# *** The term 'BLOCK' can only be used to reference 'do...end' and
+# '{...}'.
+
+# *** Ruby methods ALWAYS RETURN the evaluated result of the LAST LINE
+# of the expression, UNLESS an explicit return comes BEFORE it.
+
+# UNTIL LOOPS
