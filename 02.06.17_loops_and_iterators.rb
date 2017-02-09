@@ -262,3 +262,71 @@ end
 puts "Done!" # Also what was RETURNED was the collection of elements, in
 # this case '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]'. What is different about
 # 'FOR LOOPs' (from other LOOPs) that causes this to happen?
+
+# CONDITIONALS WITHIN LOOPs
+
+=begin
+We can make LOOPs more effective and precise if we add conditional flow
+control within them to alter their behavior. Let's see how this works.
+=end
+
+number = 0
+
+while number <= 10 # LOOP stops once this conditional is 'false'.
+  if number.odd? # Example of adding 'conditional flow control'. ** 'odd?'
+    # is a method.
+    puts number
+  end
+  number = number + 1
+end # Outputs 1, 3, 4, 7, 9. Or, all odd numbers less than or equal to 10.
+
+=begin
+The LOOP above uses the 'odd?' method and decides if the REASSIGNED current
+variable in the LOOP is odd. If it's odd it's printed to the screen. Then,
+number increments by 1 (variable is REASSIGNED), and then the loop goes on to
+the next iteration.
+=end
+
+=begin
+Reserved words 'next' and 'break' can also be useful here. If we place the
+'next' reserved word in a LOOP, it will jump from that line to the next LOOP
+iteration without executing the code beneath it. If we place the 'break'
+reserved word in a LOOP, it will exit the loop without executing the rest
+of the code in the LOOP. Let's see these in action below.
+=end
+
+# Example with 'next'
+
+number = 0
+
+while number <= 10 # LOOP stops once this conditional is 'false'.
+  if number == 3
+    number += 1
+    next # Jumps to next LOOP iteration without executing the code beneath.
+  elsif number.odd?
+    puts number
+  end
+  number += 1
+end # Outputs 1, 4, 7, 9. Or, all odd numbers less than or equal to 10
+    # EXCLUDING 3.
+
+# We used 'next' reserved word above to avoid outputting '3' in our LOOP.
+
+# Example with 'break'
+
+number = 0
+
+while number <= 10 # LOOP stops once this conditional is 'false'.
+  if number == 7
+    break # Exits the LOOP without executing the rest of the code beneath.
+  elsif number.odd?
+    puts number
+  end
+  number += 1
+end # Outputs 1, 3, 5. Or, all odd numbers less than or equal to 10
+    # EXCLUDING 7 and 9, because LOOP exits when value of x reaches 7.
+
+# Entire LOOP exits when value of x reaches 7, that's why output only goes
+# to 5.
+
+# *** Rubyists, where possible, prefer to use ITERATORS over LOOPs.
