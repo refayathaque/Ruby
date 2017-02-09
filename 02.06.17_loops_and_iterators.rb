@@ -55,6 +55,8 @@ loop { i += 1; puts i; break }
 # For the example above it's best to use 'do...end', we should limit
 # our use of one-liner curly brace blocks for code with just one function.
 
+puts "----"
+
 =begin
 'break' permits us to exit out of a LOOP at any point, so any code after
 a 'break' won't be executed. *** 'break' won't exit out of the program,
@@ -73,6 +75,8 @@ loop do
   # 5th iteration
 end
 
+puts "----"
+
 # The LOOP block above can be refactored
 
 i = 0
@@ -84,10 +88,12 @@ loop do
   end # Because in the line above we have an 'if' statement
 end
 
+puts "----"
+
 =begin
 Notice above that we needed to have an 'end' after the line with 'break',
-we needed to do this because of the 'if' statment in line 82. However if
-we refactored this code like how it was originally starting from line 68
+we needed to do this because of the 'if' statment in line 86. However if
+we refactored this code like how it was originally starting from line 72
 then we wouldn't need an 'end' after the line with 'break if i == 10'.
 This is important to keep in mind, you will need an 'end' if you decide
 to write your code with the 'if' conditional preceding the 'break' or
@@ -111,6 +117,8 @@ loop do
   break if i == 10
 end
 
+puts "----"
+
 # Refactored
 
 i = 0
@@ -124,6 +132,8 @@ loop do
     break # *
   end
 end
+
+puts "----"
 
 # WHILE LOOPS
 
@@ -165,6 +175,8 @@ with the rest of the program, in our case, the program goes on to print
 # *** Ruby methods ALWAYS RETURN the evaluated result of the LAST LINE
 # of the expression, UNLESS an explicit return comes BEFORE it.
 
+puts "----"
+
 # UNTIL LOOPS
 
 =begin
@@ -196,6 +208,8 @@ and UNTIL LOOPs stop executing once the boolean evaluats to 'true'.
 There will be times when using UNTIL, instead of WHILE, will make our
 code more readable and logical.
 =end
+
+puts "----"
 
 # DO/WHILE LOOPS
 
@@ -230,6 +244,8 @@ question before his or her response is processed by the rest of the
 expression.
 =end
 
+puts "----"
+
 # FOR LOOPS
 
 =begin
@@ -241,6 +257,7 @@ a variable, then the 'in' reserved word, followed by a collection of
 elements (ranges/arrays). Let's demonstrate this below.
 =end
 
+puts "Enter a number, then see 1 all the way up to the number"
 number = gets.chomp.to_i
 
 for i in 1..number do
@@ -250,6 +267,8 @@ end
 puts "Done!" # Interestingly, what was RETURNED was the collection of
 # elements, in this case '1..10' (number == 10). Our earlier LOOP examples
 # returned 'nil'. Something to think about...
+
+puts "----"
 
 # Now we'll do something similar but with an array
 
@@ -262,6 +281,8 @@ end
 puts "Done!" # Also what was RETURNED was the collection of elements, in
 # this case '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]'. What is different about
 # 'FOR LOOPs' (from other LOOPs) that causes this to happen?
+
+puts "----"
 
 # CONDITIONALS WITHIN LOOPs
 
@@ -286,6 +307,8 @@ variable in the LOOP is odd. If it's odd it's printed to the screen. Then,
 number increments by 1 (variable is REASSIGNED), and then the loop goes on to
 the next iteration.
 =end
+
+puts "----"
 
 =begin
 Reserved words 'next' and 'break' can also be useful here. If we place the
@@ -312,6 +335,8 @@ end # Outputs 1, 4, 7, 9. Or, all odd numbers less than or equal to 10
 
 # We used 'next' reserved word above to avoid outputting '3' in our LOOP.
 
+puts "----"
+
 # Example with 'break'
 
 number = 0
@@ -330,3 +355,27 @@ end # Outputs 1, 3, 5. Or, all odd numbers less than or equal to 10
 # to 5.
 
 # *** Rubyists, where possible, prefer to use ITERATORS over LOOPs.
+
+puts "----"
+
+# ITERATORS
+
+=begin
+What are ITERATORS? They're methods that naturally LOOP over a given set of
+data, and allow us to operate on EACH element in a collection. Arrays in Ruby
+are ordered lists. Say we have an array of names, and we want to print them,
+how would we go about doing that? We can do that using the method 'each' for
+arrays. The 'each' method is one type of ITERATOR. Let's try it out below.
+=end
+
+friends = ['Tom', 'Dick', 'Harry', 'Johnnie', 'Jim', 'Jack']
+
+friends.each do |name|
+  puts name
+end
+
+puts "----"
+
+# Can also be refactored as
+
+friends.each { |name| puts name }
