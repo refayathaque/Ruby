@@ -220,7 +220,7 @@ loop do
     # conditional is 'true'.
     break
   end
-end
+end # RETURNs nil
 
 =begin
 Note that we've used a simple LOOP method, however, the condition to
@@ -231,3 +231,34 @@ expression.
 =end
 
 # FOR LOOPS
+
+=begin
+FOR LOOPS are for LOOPing over a collection of elements (ranges/arrays)
+Unlike a WHILE LOOP, where if we're not careful we can trigger an infinite
+loop, FOR LOOPs have a definite end since it's LOOPing over a FINITE
+number of elements. It starts with the 'for' reserved word, followed by
+a variable, then the 'in' reserved word, followed by a collection of
+elements (ranges/arrays). Let's demonstrate this below.
+=end
+
+number = gets.chomp.to_i
+
+for i in 1..number do
+  puts i
+end
+
+puts "Done!" # Interestingly, what was RETURNED was the collection of
+# elements, in this case '1..10' (number == 10). Our earlier LOOP examples
+# returned 'nil'. Something to think about...
+
+# Now we'll do something similar but with an array
+
+numberarray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+for i in numberarray do
+  puts i
+end
+
+puts "Done!" # Also what was RETURNED was the collection of elements, in
+# this case '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]'. What is different about
+# 'FOR LOOPs' (from other LOOPs) that causes this to happen?
