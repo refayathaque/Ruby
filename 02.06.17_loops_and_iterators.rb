@@ -399,3 +399,24 @@ After that, we wrote the logic that we want used to operate on the variable
 the logic that we want used to operate on the variable is simply the method
 'puts'.
 =end
+
+puts "----"
+
+# Now let's add some functionality to our program above.
+
+friends = ['Tom', 'Dick', 'Harry', 'Johnnie', 'Jim', 'Jack']
+number = 1
+
+friends.each do |name|
+  puts "#{number}. #{name}"
+  number += 1 # Number is INCREMENTED every time we go through the iteration,
+  # creating a numbered list output.
+end
+
+puts "----"
+
+# Can also be refactored as
+
+friends.each { |name| puts "#{number}. #{name}"; number += 1 }
+
+# RECURSION
