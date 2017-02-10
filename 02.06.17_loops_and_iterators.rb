@@ -50,10 +50,17 @@ puts "----"
 i = 0
 loop { i += 1; puts i; break }
 
-# We won't ever write code like what we have above in the curly braces,
-# there are too many functions to put in a one-liner curly brace block.
-# For the example above it's best to use 'do...end', we should limit
-# our use of one-liner curly brace blocks for code with just one function.
+=begin
+do...end or {...}?
+We won't ever write code like what we have directly above using curly
+braces, there are too many functions to put in a one-liner curly brace
+block. For the example directly above it's best to use 'do...end'. We
+should limit our use of one-liner curly brace blocks for code with just
+one function. 'do...end' and '{...}' are the two styles of blocks,
+BY CONVENTION, we use curly braces when everything can be contained in one
+line (NOT what we have directly above). We use 'do...end' for multi-line
+operations.
+=end
 
 puts "----"
 
@@ -379,3 +386,16 @@ puts "----"
 # Can also be refactored as
 
 friends.each { |name| puts name }
+
+=begin
+So what exactly did we do above? We CALLED the 'each' method using the DOT
+operator (.) on our array 'friends'. The method 'each' LOOPs through each
+element in our array, IN ORDER, starting from 'Tom', it then starts to
+execute the code within the block ('do...end'/'{...}'). Each time we iterate
+over the array we must ASSIGN the VALUE of the ELEMENT to a VARIABLE. In our
+example we named the variable 'name' and we placed it between two pipes |...|
+After that, we wrote the logic that we want used to operate on the variable
+(the variable represents the CURRENT ARRAY ELEMENT), and in our example above
+the logic that we want used to operate on the variable is simply the method
+'puts'.
+=end
