@@ -419,4 +419,11 @@ puts "----"
 
 friends.each { |name| puts "#{number}. #{name}"; number += 1 }
 
+=begin
+*** Key to remember that in Ruby = is for ASSIGNMENTs and == is for
+COMPARISONs. IE x = [1, 2, 3] is a being ASSIGNED to the array [1, 2, 3],
+and x == [1, 2, 3] is comparing the value of x to the array[1, 2, 3] to
+see if they have the same values.
+=end
+
 # RECURSION
