@@ -427,3 +427,54 @@ see if they have the same values.
 =end
 
 # RECURSION
+
+# RECURSION is another way to create a LOOP in Ruby. It is the act of calling a
+# method from within itself.
+
+# Say we wanted to know what the double of a certain number was, then the double
+# of that number. Say we want to double the number until the pre-doubled number
+# is 10 or greater. To do this we can try something like this.
+
+def doubler(start)
+  puts start * 2
+end
+
+doubler(2)
+
+puts "----"
+
+=begin
+So the example above isn't a LOOP, we have to pass an argument over and over
+again to find the double of the pre-doubled number. So after running the code
+above we will get '4', then we have to call the method 'doubler' again and pass
+in the argument '4', then we will get '8', and on and on and on. We can do what
+we need done using RECURSION, it's much more simple. Let's try it.
+=end
+
+def doubler(start)
+  puts start
+  if start < 10
+    doubler(start * 2)
+  end
+end
+
+doubler(2) # Outputs 2, 4, 8, 16. Ends at 16 because 16 > 10.
+
+# This version of the 'doubler' method calls 'doubler' again WITHIN the method,
+# passing it the DOUBLED version of the value stored in the start variable.
+
+=begin
+Now we will use RECURSION to demonstrate the fibonacci sequence. What is the
+fibonacci sequence? It's a sequence of numbers in which each number is the sum of
+the previous two numbers in the sequence.
+=end
+
+def fibonacci(number)
+  if number < 2
+    number
+  else
+    fibonacci(number - 1) + fibonacci(number - 2)
+  end
+end
+
+puts fibonacci(6) # Outputs 8, because fibonacci(5) is 5 and fibonacci(4) is 3.
