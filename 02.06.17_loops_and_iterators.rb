@@ -419,6 +419,8 @@ puts "----"
 
 friends.each { |name| puts "#{number}. #{name}"; number += 1 }
 
+# *** 'each' method always RETURNs the original array
+
 =begin
 *** Key to remember that in Ruby = is for ASSIGNMENTs and == is for
 COMPARISONs. IE x = [1, 2, 3] is a being ASSIGNED to the array [1, 2, 3],
@@ -462,6 +464,8 @@ doubler(2) # Outputs 2, 4, 8, 16. Ends at 16 because 16 > 10.
 
 # This version of the 'doubler' method calls 'doubler' again WITHIN the method,
 # passing it the DOUBLED version of the value stored in the start variable.
+
+puts "----"
 
 =begin
 Now we will use RECURSION to demonstrate the fibonacci sequence. What is the
