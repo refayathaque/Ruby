@@ -482,3 +482,19 @@ def fibonacci(number)
 end
 
 puts fibonacci(6) # Outputs 8, because fibonacci(5) is 5 and fibonacci(4) is 3.
+
+puts "----"
+
+# An additional example of a countdown using a FOR LOOP and '.downto' method.
+
+puts "Enter a number, then see the countdown to 0"
+userinput = gets.chomp.to_i
+
+def countdown(number)
+  for i in number.downto(0) do
+    puts i
+  end
+end
+
+countdown(userinput)
+puts "Lift Off!"
