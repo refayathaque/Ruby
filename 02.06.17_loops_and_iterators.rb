@@ -502,3 +502,15 @@ end
 
 countdown(userinput)
 puts "Lift Off!"
+
+=begin
+As a documentation convention, methods are listed out with either '::' or '#' to
+indicate two different kinds of publicly accessible methods. Methods denoted by
+'::' are considered CLASS methods, while methods denoted by '#' are considered
+INSTANCE methods. IE 'flatten!' is DEFINED by Array (a CLASS), and therefore is
+considered an instance method, and is called by INSTANCEs of the Array class.
+CLASS methods on the other hand (like iterator 'each') are called on the CLASS
+itself. So we would refer to 'flatten!' as 'Array#flatten!'' and 'each' as '::each'.
+*** When we refer to Array the class we must capitalize. 'Array', not 'array',
+'array' refers to a variable 'array'.
+=end
