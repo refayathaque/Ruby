@@ -38,5 +38,20 @@ def countdown(start)
   end
 end
 
-countdown(userinput)
+countdown(userinput - 1) # We do 'userinput - 1' because our 'userinput' stays on
+                         # screen, which leads to our starting value (userinput)
+                         # appearing twice. 'userinput - 1' starts the LOOP from a
+                         # value ONE LESS than the starting value, and this prevents
+                         # the starting value (userinput) from appearing twice.
 puts "Lift Off!"
+
+# Random exercise in sorting an array...
+
+words  = ["Zack", "Eli", "Peter", "Alicia"]
+sorted = []
+
+sorted.push(words.sort)
+
+p sorted.flatten! # 'flatten!' is separate from 'flatten' (both are Array methods)
+                  # 'flatten!' returns the same array (IE the calling object) but a
+                  # mutated version of it.
