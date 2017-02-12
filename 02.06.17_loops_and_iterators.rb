@@ -99,8 +99,8 @@ puts "----"
 
 =begin
 Notice above that we needed to have an 'end' after the line with 'break',
-we needed to do this because of the 'if' statment in line 86. However if
-we refactored this code like how it was originally starting from line 72
+we needed to do this because of the 'if' statment in line 93. However if
+we refactored this code like how it was originally starting from line 77
 then we wouldn't need an 'end' after the line with 'break if i == 10'.
 This is important to keep in mind, you will need an 'end' if you decide
 to write your code with the 'if' conditional preceding the 'break' or
