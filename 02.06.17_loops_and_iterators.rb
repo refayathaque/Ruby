@@ -337,7 +337,7 @@ while number <= 10 # LOOP stops once this conditional is 'false'.
     puts number
   end
   number += 1
-end # Outputs 1, 4, 7, 9. Or, all odd numbers less than or equal to 10
+end # Outputs 1, 5, 7, 9. Or, all odd numbers less than or equal to 10
     # EXCLUDING 3.
 
 # We used 'next' reserved word above to avoid outputting '3' in our LOOP.
