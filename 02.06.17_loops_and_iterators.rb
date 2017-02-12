@@ -331,7 +331,9 @@ number = 0
 
 while number <= 10 # LOOP stops once this conditional is 'false'.
   if number == 3
-    number += 1
+    number += 1 # ASSIGNs '4' to 'number' for the next iteration, we need to
+                # have this because 'next' below will skip 'number += 1'
+                # (meant to ASSIGN 'number' an INCREMENTED value) on line 341.
     next # Jumps to next LOOP iteration without executing the code beneath.
   elsif number.odd?
     puts number
