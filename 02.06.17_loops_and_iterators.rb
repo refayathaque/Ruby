@@ -306,7 +306,7 @@ while number <= 10 # LOOP stops once this conditional is 'false'.
     puts number
   end
   number = number + 1
-end # Outputs 1, 3, 4, 7, 9. Or, all odd numbers less than or equal to 10.
+end # Outputs 1, 3, 5, 7, 9. Or, all odd numbers less than or equal to 10.
 
 =begin
 The LOOP above uses the 'odd?' method and decides if the REASSIGNED current
