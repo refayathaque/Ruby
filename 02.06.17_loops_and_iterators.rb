@@ -492,6 +492,8 @@ userinput = gets.chomp.to_i
 
 def countdown(number)
   for i in number.downto(0) do
+      next if i == number # Ensures the starting value/user input isn't printed
+                          # twice
     puts i
   end
 end
