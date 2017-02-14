@@ -94,6 +94,7 @@ array1.collect do |element|
   p element**3
 end
 
-# Why can't I get above to print out in [...] form?
+# Why can't I get above to print out in [...] form? Also...doesn't MUTATEs
+# THE CALLER. 
 
 puts "----"
