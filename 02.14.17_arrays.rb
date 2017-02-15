@@ -124,12 +124,28 @@ puts "----"
 
 # Another useful method is Array#uniq, this iterates through an ARRAY and
 # deletes duplicate values, then RETURNs the result as a new ARRAY.
-# But this method is NOT DESTRUCTIVE.
+# But this method is NOT DESTRUCTIVE. This method will not modify the
+# original ARRAY, it will RETURN a new array with the duplicates removed.
 
 array3 = [1, 2, 3, 3, 3, 4, 5, 6]
 p array3.uniq # Outputs [1, 2, 3, 4, 5, 6], we can see that two out of
               # the three '3' elements are no longer there.
-p array3 # Outputs [1, 2, 3, 3, 3, 4, 5, 6], proving that the method is
-         # indeed NOT DESTRUCTIVE.
+p array3 # Outputs [1, 2, 3, 3, 3, 4, 5, 6], the original array, proving
+         # that the method is indeed NOT DESTRUCTIVE.
 
 puts "----"
+
+=begin
+Can we perform Array#uniq DESTRUCTIVELY? Yes we can, using the BANG
+OPERATOR (!) appended to Array#uniq, so Array#uniq! is DESTRUCTIVE.
+Array#uniq and Array#uniq! are two DIFFERENT Ruby ARRAY methods, we must
+keep this very important distinction in mind. *** We cannot simply append
+the BANG OPERATOR (!) onto any method and make it DESTRUCTIVE.
+=end
+
+p array3.uniq! # Outputs [1, 2, 3, 4, 5, 6], expected as per 'uniq' doc
+p array3 # Outputs [1, 2, 3, 4, 5, 6], proving 'uniq!' is DESTRUCTIVE
+
+puts "----"
+
+# ITERATING OVER AN ARRAY
