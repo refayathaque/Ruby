@@ -225,3 +225,81 @@ access the Outer Scope, but not vice versa”, becomes applicable.
 =end
 
 puts "++++"
+
+# NESTED ARRAYs
+
+# NESTED ARRAYs are ARRAYs within ARRAYs, we can use NESTED ARRAYs if we
+# wanted to keep track of sand volleyball teams for example.
+
+teams = [["Timmy", "Harriet"], ["John", "Lisa"], ["Katie", "Harold"]]
+
+# We can find teams by index, say we want to find the 2nd team.
+
+p teams[1] # Outputs ["John", "Lisa"]
+
+puts "----"
+
+# COMPARING ARRAYs
+
+# We can compare ARRAYs for equality using the '==' operator
+
+array5 = [1, 2, 3, 4, 5]
+array6 = [1, 2, 3, 4]
+
+def thesame?(array)
+array7 = [1, 2, 3, 4]
+  if array == array7
+    puts "Array passed as argument is same as array7"
+  else
+    puts "Array passed as argument is NOT same as array7"
+  end
+end
+
+thesame?(array5) # [1, 2, 3, 4, 5] != [1, 2, 3, 4]
+thesame?(array6) # [1, 2, 3, 4] == [1, 2, 3, 4]
+
+puts "----"
+
+# An important method to know about is Array#unshift, it is a method
+# which MUTATEs THE CALLER (DESTRUCTIVE), and is used to add elements to
+# the beginning of an array.
+
+array8 = [2, 3, 4, 5]
+
+# Say we want to add a '1' to the beginning of 'array8'.
+
+array8.unshift(1) # RETURNs [1, 2, 3, 4, 5]
+p array8 # Outputs [1, 2, 3, 4, 5], proving that the method is DESTRUCTIVE.
+
+puts "----"
+
+# COMMON ARRAY METHODs
+
+# Array#include? is a method used to check if the argument given is inside
+# an array. Having a question mark at the end of a method USUALLY implies
+# that a boolean value will be RETURNED, *** just like the BANG OPERATOR
+# this is strictly by convention only and NOT a property of the language.
+
+p array8.include?(2) # Outputs 'true'
+
+puts "----"
+
+# Array#flatten is used to take an array with nested arrays and create a
+# one-dimensional array. 'Flatten' appropriately describes the action.
+
+array9 = [1, 2, 3, ["Ruby", "Is", "Fun"], ["Hello", "Bye"]]
+
+p array9.flatten # Outputs [1, 2, 3, "Ruby", "Is", "Fun", "Hello", "Bye"]
+p array9 # Outputs [1, 2, 3, ["Ruby", "Is", "Fun"], ["Hello", "Bye"]],
+         # proving that the method is NOT DESTRUCTIVE.
+
+puts "----"
+
+# Array#flatten! is another method that IS DESTRUCTIVE, and MUTATEs THE
+# CALLER. Let's try it out.
+
+p array9.flatten! # Outputs [1, 2, 3, "Ruby", "Is", "Fun", "Hello", "Bye"]
+p array9 # Outputs [1, 2, 3, "Ruby", "Is", "Fun", "Hello", "Bye"],
+         # proving that the method IS DESTRUCTIVE, and MUTATEs THE CALLER.
+
+puts "----"
