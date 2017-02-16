@@ -191,9 +191,37 @@ nondestructive(array4)
 p array4 # Outputs [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 =begin
-So what happened above? The 'destructive' method perfomed a DESTRUCTIVE
+So what happened above? The 'destructive' method performed a DESTRUCTIVE
 action (pop) on its argument, and modified 'array4', even though 'array4'
-was initialized outside the method. So the element '10' was popped out of
-the orginal array. The 'nondestructive' method performed a NON DESTRUCTIVE
-action (select), leaving what the 'destructive' method modified unchanged.
+was initialized outside the method (?). So the element '10' was popped out
+of the orginal array. The 'nondestructive' method performed a NON
+DESTRUCTIVE action (select), leaving what the 'destructive' method
+previously modified unchanged.
 =end
+
+puts "++++"
+
+# IMPORTANT ASIDE ON VARIABLE SCOPE
+
+a = 1         # Outer scope variable initialized
+
+loop do       # The block creates an inner scope
+  puts a      # Outputs 1
+  a = a + 1   # 'a' is re-assigned to a new value
+  break       # Necessary to prevent infinite loop
+end
+
+puts a        # Outputs 2, "a" was re-assigned in the inner scope. Outer
+              # scope only has access to outer scope (not inner scope).
+              # Since "a" was initialized in the outer scope, we have
+              # access to it here.
+
+=begin
+`Block` scope is different from `Method` scope. Quoting the lesson statement:
+"Methods have no notion of "outer" or "inner" scope -- you must explicitly
+pass in any parameters to methods.” When you have a `block` scope it creates
+an inner scope, and this is when the Variable Scope Rule, ”Inner Scope can
+access the Outer Scope, but not vice versa”, becomes applicable.
+=end
+
+puts "++++"
