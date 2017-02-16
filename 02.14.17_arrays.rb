@@ -159,6 +159,8 @@ p array4.select { |element| element >= 7 } # Outputs [7, 8, 9, 10]
 p array4 # Outputs [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], original 'array4' is
 # unmodified. DOES NOT MUTATE THE CALLER, method is NOT DESTRUCTIVE.
 
+puts "----"
+
 # METHODs WITH A !
 
 =begin
@@ -168,4 +170,30 @@ method will MUTATE THE CALLER (This is NOT ALWAYS the case however).
 OPERATOR to see if it will MUTATE the CALLER. Interestingly, there are
 methods like Array#pop and Array#push that are DESTRUCTIVE but do not
 have the BANG OPERATOR.
+=end
+
+# MUTATING THE CALLER: THE SEQUEL
+
+# Let's do an example involving methods, a DESTRUCTIVE, and a NON
+# DESTRUCTIVE method.
+
+def destructive(array)
+  array.pop
+end
+
+def nondestructive(array)
+  array.select { |element| element >= 4 }
+end
+
+destructive(array4)
+nondestructive(array4)
+
+p array4 # Outputs [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+=begin
+So what happened above? The 'destructive' method perfomed a DESTRUCTIVE
+action (pop) on its argument, and modified 'array4', even though 'array4'
+was initialized outside the method. So the element '10' was popped out of
+the orginal array. The 'nondestructive' method performed a NON DESTRUCTIVE
+action (select), leaving what the 'destructive' method modified unchanged.
 =end
