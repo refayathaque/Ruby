@@ -149,3 +149,23 @@ p array3 # Outputs [1, 2, 3, 4, 5, 6], proving 'uniq!' is DESTRUCTIVE
 puts "----"
 
 # ITERATING OVER AN ARRAY
+
+# Array#select iterates over an array then RETURNs a new array which
+# includes any items that RETURN 'true' to the expression provided.
+
+array4 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+p array4.select { |element| element >= 7 } # Outputs [7, 8, 9, 10]
+p array4 # Outputs [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], original 'array4' is
+# unmodified. DOES NOT MUTATE THE CALLER, method is NOT DESTRUCTIVE.
+
+# METHODs WITH A !
+
+=begin
+The BANG OPERATOR (!) at the end of a method USUALLY indicates that the
+method will MUTATE THE CALLER (This is NOT ALWAYS the case however).
+*** It is prudent to check the documentation of any method with a BANG
+OPERATOR to see if it will MUTATE the CALLER. Interestingly, there are
+methods like Array#pop and Array#push that are DESTRUCTIVE but do not
+have the BANG OPERATOR.
+=end
