@@ -344,3 +344,8 @@ p array10.sort! # Outputs [1, 2, 3, 3, 4, 4, 5, 6, 6, 8, 34]
 p array10 # Outputs [1, 2, 3, 3, 4, 4, 5, 6, 6, 8, 34], so Array#sort! is
           # DESTRUCTIVE as it MUTATEs THE CALLER. It modifies the original
           # data.
+
+puts "----"
+
+# *** Methods that MUTATE THE CALLER -> Modify the original data
+# *** Methods that DO NO MUTATE THE CALLER -> Only RETURN new data
