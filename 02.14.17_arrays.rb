@@ -245,10 +245,14 @@ puts "----"
 
 array5 = [1, 2, 3, 4, 5]
 array6 = [1, 2, 3, 4]
+# array7 = [1, 2, 3, 4]
 
 def thesame?(array)
 array7 = [1, 2, 3, 4]
-  if array == array7
+  if array == array7 # array7 must be initialized inside the method for
+                     # the method to have access to it, can't access if
+                     # it's initialized in the outer scope like what is
+                     # commented out above.
     puts "Array passed as argument is same as array7"
   else
     puts "Array passed as argument is NOT same as array7"
@@ -257,6 +261,21 @@ end
 
 thesame?(array5) # [1, 2, 3, 4, 5] != [1, 2, 3, 4]
 thesame?(array6) # [1, 2, 3, 4] == [1, 2, 3, 4]
+
+=begin
+The example above demonstrates something we have not encountered before,
+and that is VARIABLE SCOPE as it applies to METHODs (NOT BLOCKs). The rule
+we learnt earlier, "Inner Scope can access Outer Scope, but not vice versa"
+does NOT APPLY for METHODs. METHODs have their OWN VARIABLE SCOPE. If we
+need our METHODs to be able to access a variable (above we needed it to
+access array7) then it must be initialized in the INNER SCOPE (inside the
+METHOD). Code in the OUTER SCOPE (outside of the METHOD), CANNOT ACCESS
+variables initialized in the INNER SCOPE (inside the METHOD). So OUTER can
+ONLY access OUTER, and INNER can ONLY access INNER, unlike with BLOCKs.
+We can PASS INTO the METHOD variables initialized in the OUTER SCOPE, and
+that's what we've done above, but the METHOD traditionally cannot access
+variables initialized in the OUTER SCOPE.
+=end
 
 puts "----"
 
@@ -378,6 +397,6 @@ array12.each { |element| puts element**2 }
 puts "----"
 
 p array12.each # RETURNs #<Enumerator: [4, 5, 6]:each> because there is
-               # NO BLOCK. Outputs RETURNED value because of 'p'.
+               # NO BLOCK. Outputs RETURNED value (^) because of 'p'.
 
 puts "----"
