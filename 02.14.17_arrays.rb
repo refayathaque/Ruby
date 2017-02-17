@@ -349,3 +349,12 @@ puts "----"
 
 # *** Methods that MUTATE THE CALLER -> Modify the original data
 # *** Methods that DO NO MUTATE THE CALLER -> Only RETURN new data
+
+# Array#product is used to combine two arrays, this is done in a way
+# similar to the distributive property we know of from Algebra. Let's see.
+
+array11 = [1, 2, 3]
+array12 = [4, 5, 6]
+
+p array11.product(array12) # Outputs what is below:
+      # [[1, 4],[1, 5],[1, 6],[2, 4],[2, 5],[2, 6],[3, 4],[3, 5],[3, 6]]
