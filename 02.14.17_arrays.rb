@@ -358,3 +358,26 @@ array12 = [4, 5, 6]
 
 p array11.product(array12) # Outputs what is below:
       # [[1, 4],[1, 5],[1, 6],[2, 4],[2, 5],[2, 6],[3, 4],[3, 5],[3, 6]]
+
+puts "----"
+
+# EACH VS MAP
+
+=begin
+Array#each is a simple way of iterating over a collection in Ruby, and is
+preferred over using the 'for' loop. Array#each is commonly used along a
+block. If given a block, Array#each runs the code in the block for each
+element in the collection and RETURNs the collection (original data,
+unmodified) it was invoked on. *** If no block is given, Array#each
+RETURNs an ENUMERATOR. Let's try some examples.
+=end
+
+array12.each { |element| puts element**2 }
+# This will output '16, 25, and 36' but will RETURN [4, 5, 6]
+
+puts "----"
+
+p array12.each # RETURNs #<Enumerator: [4, 5, 6]:each> because there is
+               # NO BLOCK. Outputs RETURNED value because of 'p'.
+
+puts "----"
