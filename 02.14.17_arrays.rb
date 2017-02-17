@@ -303,3 +303,44 @@ p array9 # Outputs [1, 2, 3, "Ruby", "Is", "Fun", "Hello", "Bye"],
          # proving that the method IS DESTRUCTIVE, and MUTATEs THE CALLER.
 
 puts "----"
+
+# Array#each_index iterates through an array, and the variable represents
+# the index number instead of the value at each index. It passes the index
+# of the element into the block and we can do whatever we want with it.
+# The original ARRAY is returned.
+
+array9.each_index { |indexnumber| puts "Index #{indexnumber}"}
+
+puts "----"
+
+# Array#each_with_index is more useful than the method above. It allows us
+# to manipulate both the value and the index by passing in two parameters
+# to the block, the first is the value and the second is the index. We
+# can use them in the block. Let's try this.
+
+# Let's list out the winners of a swimming competition.
+
+standings = ["Michael", "Katie", "Jane", "Eduardo", "George"]
+
+standings.each_with_index { |name, index| puts "#{index + 1}. #{name}"}
+
+# We get a list of winners with their names and corresponding standings.
+
+puts "----"
+
+# We can use Array#sort to...well, sort an Array. Let's see below.
+
+array10 = [1, 3, 6, 34, 2, 4, 6, 8, 3, 4, 5]
+p array10.sort # Outputs [1, 2, 3, 3, 4, 4, 5, 6, 6, 8, 34]
+p array10 # Outputs [1, 3, 6, 34, 2, 4, 6, 8, 3, 4, 5], so this method is
+          # not DESTRUCTIVE, it doesn't MUTATE THE CALLER. Array#sort only
+          # RETURNs new data, doesn't modify the original data.
+
+puts "----"
+
+# What about Array#sort!? Let's see.
+
+p array10.sort! # Outputs [1, 2, 3, 3, 4, 4, 5, 6, 6, 8, 34]
+p array10 # Outputs [1, 2, 3, 3, 4, 4, 5, 6, 6, 8, 34], so Array#sort! is
+          # DESTRUCTIVE as it MUTATEs THE CALLER. It modifies the original
+          # data.
