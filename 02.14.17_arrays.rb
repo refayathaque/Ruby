@@ -400,3 +400,44 @@ p array12.each # RETURNs #<Enumerator: [4, 5, 6]:each> because there is
                # NO BLOCK. Outputs RETURNED value (^) because of 'p'.
 
 puts "----"
+
+=begin
+Array#map is similar to Array#each, where it's different is in what is
+RETURNED. Array#map RETURNs a new array containing the values RETURNED
+by the block, while Array#each RETURNs the original unmodified array.
+=end
+
+=begin
+
+In PRY
+
+[1] pry(main)> array = [2, 4, 6, 8]
+=> [2, 4, 6, 8]
+[2] pry(main)> array.map { |int| int**2 }
+=> [4, 16, 36, 64] RETURNs a new array containing the values RETURNED
+                   by the block
+[3] pry(main)> array.each { |int| int**2 }
+=> [2, 4, 6, 8] RETURNs the original unmodified array
+
+=end
+
+# Let's further examine Array#map, and see what is RETURNED with ::puts.
+
+=begin
+
+In PRY
+
+[1] pry(main)> array = [2, 4, 6, 8]
+=> [2, 4, 6, 8]
+[2] pry(main)> array.map { |int| puts int**2 }
+4
+16
+36
+64
+=> [nil, nil, nil, nil]
+
+We know that ::puts ALWAYS RETURNs 'nil', over here our block with ::puts
+was invoked and 'nil' was RETURNED which makes up the values in the newly
+created RETURNED array.
+
+=end
