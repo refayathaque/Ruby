@@ -441,3 +441,15 @@ was invoked and 'nil' was RETURNED which makes up the values in the newly
 created RETURNED array.
 
 =end
+
+=begin
+Say we want to replace an element in an array with something else, how do
+we go about doing this? We can do this by setting the value of an item in
+an array using the index as a key. Below we have an array of names, and we
+want to replace 'Margaret' with 'Jody', how would we do this?
+=end
+
+names = ['George', 'Bernard', 'Margaret', 'Abigail']
+names[2] = 'Jody'
+
+p names # Outputs ['George', 'Bernard', 'Jody', 'Abigail']
