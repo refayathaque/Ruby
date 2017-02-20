@@ -50,10 +50,31 @@ puts "----"
 
 array = [["test", "hello", "world"], ["example", "mem"]]
 
-p array[1].first
+p array[1].first # array[1] selects the element ["example", "mem"], and
+                 # .first selects the first element in that array.
 
 puts "----"
 
 # Or...
 
 p array.last.first
+
+puts "----"
+
+=begin
+Write a program that iterates over an array and builds a new array that is
+the result of incrementing each value in the original array by a value of
+2. You should have two arrays at the end of this program, the original
+array and the new array you've created. Print both arrays to the screen
+using the 'p' method instead of puts.
+=end
+
+array1 = [2, 4, 6, 8]
+array2 = []
+
+array1.each do |element|
+  array2.push(element + 2) # Can use shovel operator (<<) in lieu of '.push'
+end
+
+p array1
+p array2
