@@ -453,5 +453,3 @@ names = ['George', 'Bernard', 'Margaret', 'Abigail']
 names[2] = 'Jody'
 
 p names # Outputs ['George', 'Bernard', 'Jody', 'Abigail']
-
-test
