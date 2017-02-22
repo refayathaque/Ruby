@@ -145,3 +145,53 @@ greeting("George", age: 28, hair: "black") # Output "Hi my name is George.
 puts "----"
 
 # HASHES VS ARRAYS
+
+=begin
+We need to ask ourselves some key questions when deciding whether to use a
+HASH or an array.
+
+1. Does this data need to be associated with a specific label? If yes, then
+use a HASH. If the data doesn't have a natural label then use an array.
+
+2. Does order matter? If so, then use an array. In Ruby 1.9 HASHES also
+maintain order, but ordered items are usually stored in arrays.
+
+3. Do we need a "stack" or a "queue" structure? Arrays are good at mimicking
+simple "first-in-first-out" queues, or "last-in-first-out" stacks. (???)
+=end
+
+# HASH KEYs
+
+=begin
+So far we've been using symbols (key:) as our keys, and this is the most
+common use case in the wild. However, it is possible to use different data
+types as keys. IE strings, arrays, integers, floats, and even HASHES. HASHES
+can be very diverse, and we can pretty much store whatever we want in them.
+
+*** We must use the OLD HASH SYNTAX ({:name=>'Refayat'}) when using anything
+other than symbols and strings as keys.
+
+Let's look at some examples below.
+
+[1] pry(main)> {"greeting": "Hello"} # Strings work with new and old syntax
+=> {:greeting=>"Hello"}
+
+[2] pry(main)> {["greeting"]=> "Hello"} # Array
+=> {["greeting"]=>"Hello"}
+[3] pry(main)> {1=> "Hello"} # Integer
+=> {1=>"Hello"}
+[4] pry(main)> {1.2=> "Hello"} # Float
+=> {1.2=>"Hello"}
+[5] pry(main)> {{greeting: "Hello"}=> "Hello"} # HASH
+=> {{:greeting=>"Hello"}=>"Hello"}
+=end
+
+# COMMON HASH METHODs
+
+
+
+
+
+
+
+=end
