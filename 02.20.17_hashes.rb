@@ -70,6 +70,78 @@ Say we wanted to merge two hashes together. How would we do that?
 [17] pry(main)> newhash
 => {:city=>"Washington DC", :car=>"BMW"}
 
+We called Hash#merge! on Hash ‘newsyntax’ and passed in Hash ‘newhash’ as an
+argument.
+
 =end
 
 # ITERATING OVER HASHES
+
+=begin
+Iterating over HASHES is similar to iterating over arrays, there are some
+small differences. One difference has to do with the variables, with HASHES
+we have to assign variables to both the key and the value. Let's do an example
+below and see how this works.
+=end
+
+person = {name: 'Bob', height: '6 ft', weight: '160 lbs', hair: 'brown'}
+
+person.each do |key, value| # Assigned two variables to the key and value
+  puts "Bob's #{key} is #{value}" # Using String Interpolation we get the
+  # output 'Bob's name is Bob, Bob's height is 6 ft, Bob's weight is 160 lbs,
+  # Bob's hair is brown'.
+end
+
+puts "----"
+
+# HASHES AS OPTIONAL PARAMETERS
+
+=begin
+Previously, in the methods chapter, we talked about how we can assign default
+PARAMETERS to methods so that our outputs remain consistent. We can also use
+HASHES to accept OPTIONAL PARAMETERS when creating methods. This allows us
+to give our methods more flexibility and expressivity. Let's try this out.
+=end
+
+def greeting(name, options = {})
+  if options.empty?
+    puts "Hi my name is #{name}"
+  else
+    puts "Hi my name is #{name}. I'm #{options[:age]} years old and my hair" +
+    " color is #{options[:hair]}."
+  end
+end
+
+ageandhair = {age: 28, hair: "black"}
+greeting("George")
+greeting("George", ageandhair) # The entire HASH could've also been passed in
+                               # as an argument. Like what we have below.
+puts "----"
+
+greeting("George", {age: 28, hair: "black"}) # Output "Hi my name is George.
+                              # I'm 28 years old and my hair color is black."
+
+puts "----"
+
+=begin
+So what exactly did we do above? We used Hash#empty? (returns boolean value)
+to see whether the OPTIONAL PARAMETER, which is a HASH, has anything passed
+into it.
+
+After defining the method we called it twice. Once without passing
+anything into the OPTIONAL PARAMETER, and the second time passing in a HASH
+into the OPTIONAL PARAMETER.
+
+This Ruby feature can make our methods more expressive and dynamic.
+
+*** What's also interesting is that if we choose to pass in the entire HASH
+as an argument, we can do so WITHOUT having the curly braces {}, let's see
+this in action below.
+=end
+
+greeting("George", age: 28, hair: "black") # Output "Hi my name is George.
+                              # I'm 28 years old and my hair color is black."
+
+puts "----"
+
+# HASHES VS ARRAYS
