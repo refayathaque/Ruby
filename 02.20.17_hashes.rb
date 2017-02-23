@@ -188,9 +188,25 @@ Let's look at some examples below.
 
 # COMMON HASH METHODs
 
+=begin
+Hash#has_key? method allows us to check the has for a specific key, returning
+a boolean value. Let's see this in action below.
 
+[1] pry(main)> hash = {1.45=> "George", name: "Harriet"}
+=> {1.45=>"George", :name=>"Harriet"}
+[2] pry(main)> hash.has_key?(1.45)
+=> true
 
+Hash#select method allows us to find key-value pairs that meet conditions set
+by a block. The method returns any key-value pairs which evaluate to true when
+ran through the block. Hash#select is an iterator.
 
+[2] pry(main)> name_and_age = {"Bob" => 42, "Steve" => 31, "Joe" => 19}
+=> {"Bob"=>42, "Steve"=>31, "Joe"=>19}
+[3] pry(main)> name_and_age.select {|key, value| key=="Bob" || value==31}
+=> {"Bob"=>42, "Steve"=>31}
+[6] pry(main)> name_and_age.select {|key, value| key=="Steve" && value==31 }
+=> {"Steve"=>31}
 
 
 
