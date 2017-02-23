@@ -4,7 +4,7 @@
 A HASH is a data structure which stores items by associated KEYs. Arrays,
 on the other, store items by an ordered index. Entries in a HASH are
 referred to as 'key-value pairs'. HASHES are created using symbols (:)
-as keys and any data types as values. Key-value pairs in a hash are
+as keys and any data types as values. Key-value pairs in a HASH are
 surrounded by curly braces '{}', and are separated with commas. HASHES
 can be created using two syntaxes, the old and the new. The old syntax
 uses '=>' to separate the key and the value. The new syntax was brought
@@ -35,7 +35,7 @@ What if we wanted to remove a key-value pair?
 [6] pry(main)> newsyntax
 => {:name=>"Refayat", :hair=>"black"}
 
-Say we wanted to retrieve a piece of information from a hash
+Say we wanted to retrieve a piece of information from a HASH
 
 [7] pry(main)> newsyntax[:hair]
 => "black"
@@ -47,17 +47,17 @@ What if we wanted to retrieve the corresponding key of a specific value?
 [11] pry(main)> newsyntax.key("Refayat")
 => :name
 
-Say we wanted to merge two hashes together. How would we do that?
+Say we wanted to merge two HASHes together. How would we do that?
 
 # We use the Hash#merge! method if we want to mutate the caller. And
 # Hash#merge method if we dont want to mutate the caller, IE leave the
-# original hash unmodified.
+# original HASH unmodified.
 
 [12] pry(main)> newsyntax
 => {:name=>"Refayat", :hair=>"black"}
-[13] pry(main)> newhash = {city: 'Washington DC', car: 'BMW'}
+[13] pry(main)> newHASH = {city: 'Washington DC', car: 'BMW'}
 => {:city=>"Washington DC", :car=>"BMW"}
-[15] pry(main)> newsyntax.merge!(newhash)
+[15] pry(main)> newsyntax.merge!(newHASH)
 => {:name=>"Refayat",
  :hair=>"black",
  :city=>"Washington DC",
@@ -67,10 +67,10 @@ Say we wanted to merge two hashes together. How would we do that?
  :hair=>"black",
  :city=>"Washington DC",
  :car=>"BMW"}
-[17] pry(main)> newhash
+[17] pry(main)> newHASH
 => {:city=>"Washington DC", :car=>"BMW"}
 
-We called Hash#merge! on Hash ‘newsyntax’ and passed in Hash ‘newhash’ as an
+We called Hash#merge! on Hash ‘newsyntax’ and passed in Hash ‘newHASH’ as an
 argument.
 
 =end
@@ -192,9 +192,9 @@ Let's look at some examples below.
 Hash#has_key? method allows us to check the has for a specific key, returning
 a boolean value. Let's see this in action below.
 
-[1] pry(main)> hash = {1.45=> "George", name: "Harriet"}
+[1] pry(main)> HASH = {1.45=> "George", name: "Harriet"}
 => {1.45=>"George", :name=>"Harriet"}
-[2] pry(main)> hash.has_key?(1.45)
+[2] pry(main)> HASH.has_key?(1.45)
 => true
 
 Hash#select method allows us to find key-value pairs that meet conditions set
@@ -208,6 +208,74 @@ ran through the block. Hash#select is an iterator.
 [6] pry(main)> name_and_age.select {|key, value| key=="Steve" && value==31 }
 => {"Steve"=>31}
 
+We already know how to retrieve values based on their corresponding keys.
 
+[5] pry(main)> name_and_age
+=> {"Bob"=>42, "Steve"=>31, "Joe"=>19}
+[6] pry(main)> name_and_age["Steve"]
+=> 31
 
+We can also do this using the method Hash#fetch. This method allows us to
+pass a given key and it will return the value for that key if it exists. We
+can also specify an option for return if the particular key isn't present.
+
+[8] pry(main)> name_and_age
+=> {"Bob"=>42, "Steve"=>31, "Joe"=>19}
+[9] pry(main)> name_and_age.fetch("Bob")
+=> 42
+[10] pry(main)> name_and_age.fetch("Doug", "Doug isn't in the HASH") # We
+# specfied an option here in case "Doug" isn't a key in the HASH.
+=> "Doug isn't in the HASH" # Since "Doug" isn't a key in the HASH.
+
+We can also specify an option for return if the particular key isn't present
+with a BLOCK.
+
+[1] pry(main)> name_and_age = {"Bob" => 42, "Steve" => 31, "Joe" => 19}
+=> {"Bob"=>42, "Steve"=>31, "Joe"=>19}
+[2] pry(main)> name_and_age.fetch("Doug")
+{ |element| "Doug isn't in the HASH, #{element}"}
+=> "Doug isn't in the HASH, Doug"
+
+It is important to keep in mind that even though we are dealing with HASHes
+when using Hash#fetch with the BLOCK we set the variable like how it's done
+with arrays, there will be only one variable IE |element|. Following the
+variable will be the option for return if the particular key isn't present.
+Since we have a variable we can do String Interpolation and print the
+variable in the option string.
+
+Say we want to convert a HASH into an array, we can use the method Hash#to_a.
+This method does NOT mutate the caller however.
+
+[1] pry(main)> name_and_age = {"Bob" => 42, "Steve" => 31, "Joe" => 19}
+=> {"Bob"=>42, "Steve"=>31, "Joe"=>19}
+[2] pry(main)> name_and_age.to_a
+=> [["Bob", 42], ["Steve", 31], ["Joe", 19]]
+[3] pry(main)> name_and_age
+=> {"Bob"=>42, "Steve"=>31, "Joe"=>19} # Does NOT mutate the caller
+
+Lastly, if we want to just retrieve all keys or values from a HASH we can
+do that easily using the methods Hash#keys and Hash#values.
+
+[5] pry(main)> name_and_age.keys
+=> ["Bob", "Steve", "Joe"]
+[6] pry(main)> name_and_age.values
+=> [42, 31, 19]
+
+These two methods return arrays, so if we want to list them out we are going
+to have to be creative. Since they return arrays we can use an Array iterator
+method with a block and have the block print each element in the array.
 =end
+
+name_and_age = {"Bob" => 42, "Steve" => 31, "Joe" => 19}
+
+name_and_age.keys.each { |element| puts element}
+
+# Prints "Bob, Steve, Joe"
+
+puts "----"
+
+name_and_age.values.each { |element| puts element}
+
+# Prints "42, 31, 19"
+
+puts "----"
