@@ -95,3 +95,99 @@ movie_by_year.each_pair { |key, value| puts "#{key} was released in #{value}" }
 # Hash#each_pair
 
 puts "----"
+
+=begin
+What method could you use to find out if a Hash contains a specific value in
+it? Write a program to demonstrate this use.
+=end
+
+person = {name: 'Bob', occupation: 'web developer', hobbies: 'painting'}
+
+puts "What is Bob's occupation?"
+response = gets.chomp
+occupation = person[:occupation] # Returns value for key :occupation
+
+if person.has_value?(response) # Hash#has_value? is a method that we can use to
+                          # find out if a Hash contains a specific value in it.
+  puts "That's right, Bob is a #{response}"
+else
+  puts "No, Bob is a #{occupation}"
+end
+
+puts "----"
+
+=begin
+Given the array below, write a program that prints out groups of words that
+are anagrams. Anagrams are words that have the same exact letters in them
+but in a different order. Your output should look something like this:
+["demo", "dome", "mode"]
+["neon", "none"]
+(etc)
+=end
+
+words = ['demo', 'none', 'tied', 'evil', 'dome', 'mode', 'live',
+          'fowl', 'veil', 'wolf', 'diet', 'vile', 'edit', 'tide',
+          'flow', 'neon']
+hash = {} # Blank hash, will populate with code below
+
+array.each do |element| # Must iterate over elements in 'words' array *
+  key = element.chars.sort.join # First, we must create keys for 'hash'
+  if hash.has_key?(key) # Conditional to check if hash already has the key,
+                        # if hash already has the key then line below executed.
+    hash[key].push(element) # Array#push inserts element into key-value pair's
+                            # array (array already present if hash has key as
+                            # can be seen in the line below).
+  else # If hash does NOT already have the key then execute line below
+    hash[key] = [element] # Adding a key-value pair to 'hash', value has to be
+                          # an array because we will need to have multiple
+                          # values per key (IE 'dome' and 'mode' must fall
+                          # under the same key). '[element]' creates the
+                          # key-value pair with the value as an array, as
+                          # opposed to just 'element'.
+  end # Closing conditional
+end # Closing do..end block
+
+hash.each do |key, value| # Must iterate over key-value pairs in 'hash'
+  p values # ::p (instead of puts) because we need to print out the values
+           # which are arrays.
+end # Closing do..end block
+
+=begin
+*
+
+String#chars is a method that returns an array of characters in str.
+[1] pry(main)> a = "Hello"
+=> "Hello"
+[2] pry(main)> a.chars
+=> ["H", "e", "l", "l", "o"]
+*** Can also use String#split(//) and String#split(''), String#split is a
+method that divides str into substrings based on a delimiter, returning an
+array of these substrings.
+
+Array#sort is a method that returns a new array created by sorting self
+(alphabetically and numerically).
+
+1] pry(main)> a = "hello"
+=> "hello"
+[2] pry(main)> a.chars
+=> ["h", "e", "l", "l", "o"]
+[3] pry(main)> a.chars.sort
+=> ["e", "h", "l", "l", "o"]
+
+[4] pry(main)> a = [6, 3, 2, 9]
+=> [6, 3, 2, 9]
+[5] pry(main)> a.sort
+=> [2, 3, 6, 9]
+[6] pry(main)>
+
+Array#join is a method that returns a string created by converting each
+element of the array to a string, separated by the given separator.
+
+[8] pry(main)> a
+=> [6, 3, 2, 9]
+[9] pry(main)> a.join
+=> "6329"
+[10] pry(main)> a.join("<")
+=> "6<3<2<9"
+
+=end
