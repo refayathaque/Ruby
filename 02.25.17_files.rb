@@ -174,3 +174,26 @@ variables as placeholders for each line and its line index. Let's try.
 =end
 
 # DELETING A FILE
+
+=begin
+We delete files using the method ::delete.
+
+[1] pry(main)> File.open("file2.txt", "w+")
+=> #<File:file2.txt>
+[2] pry(main)> File.delete("file2.txt")
+=> 1
+
+How can we copy the contents of a file into a new file?
+
+[1] pry(main)> original = File.read("file.txt")
+=> "This is line 1.\nThis is line 2.\nThis is line 3.\nThis is line 4.\nThis is line 5.\nThis is line 6.\nThis is line 7.\n"
+[2] pry(main)> newfile = File.open("file_copy.txt", "w+")
+=> #<File:file_copy.txt>
+[3] pry(main)> File.open(newfile, "w+") do |file|
+[3] pry(main)*   file << original
+[3] pry(main)* end
+=> #<File:file_copy.txt (closed)>
+[4] pry(main)> File.read("file_copy.txt")
+=> "This is line 1.\nThis is line 2.\nThis is line 3.\nThis is line 4.\nThis is line 5.\nThis is line 6.\nThis is line 7.\n"
+
+# OVERVIEW OF FILE CLASSES
