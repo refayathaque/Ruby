@@ -196,4 +196,82 @@ How can we copy the contents of a file into a new file?
 [4] pry(main)> File.read("file_copy.txt")
 => "This is line 1.\nThis is line 2.\nThis is line 3.\nThis is line 4.\nThis is line 5.\nThis is line 6.\nThis is line 7.\n"
 
+=end
+
 # OVERVIEW OF FILE CLASSES
+
+=begin
+It all comes down to the RIGHT STUFF being in the RIGHT KIND OF FILES in the
+RIGHT PLACE. By RIGHT KIND OF FILES we mean the type of file, referred to as
+the file's FORMAT or EXTENSION. By being in the RIGHT PLACE we mean that it
+is located in a recognizable DIRECTORY STRUCTURE or PATH.
+
+In Ruby, the File class is a SUBCLASS of IO, a class responsible for
+representing BIDIRECTIONAL STREAMS (IO stands for Input/Output). Some IO
+streams include `STDOUT`, `STDIN`, and `STDERR`, that stand for "standard
+output", "standard input", and "standard error", respectively.
+
+[1] pry(main)> File.superclass
+=> IO
+[2] pry(main)> $stdout
+=> #<IO:<STDOUT>>
+[3] pry(main)> $stdin
+=> #<IO:<STDIN>>
+[4] pry(main)> $stderr
+=> #<IO:<STDERR>>
+
+Ruby offers us a few classes to interface with files and the file system.
+In addition to `File` class, there's `Dir, which is an interface for
+manipulating directories and their contents. Another class that is helpful
+in linking files and directories is `Pathname`.
+
+What if we want to move a file from a directory into a NEW sub-directory in
+that directory?
+
+[3] pry(main)> Dir.mkdir("NewDirectory", 0700) # Create NEW directory
+=> 0
+[4] pry(main)> Dir.open("NewDirectory") do |dir|
+[4] pry(main)*   FileUtils.mv "file.txt", dir # Move file to NEW directory
+[4] pry(main)* end
+=> 0
+[5] pry(main)> exit
+Sun Feb 26 cd NewDirectory/
+Sun Feb 26 ls
+file.txt # The file has been moved
+
+What if we want to check a directory for certain extensions. IE Let's check
+the current directory to see what our Ruby (.rb) files are.
+
+[3] pry(main)> d = Dir.new(".") # ::new returns a new directory object for
+                                  the named directory.
+=> #<Dir:.>
+[4] pry(main)> while file = d.read do
+[4] pry(main)*   puts "#{file} has extension rb" if File.extname(file) == ".rb"
+[4] pry(main)* end
+01.12.17_hash_ex_ch1ex3and4.rb has extension rb
+01.12.17_hash_movie_by_year.rb has extension rb
+01.12.17_string_interpolation.rb has extension rb
+01.14.17_operations_ch1ex2and4and5.rb has extension rb
+01.14.17_variables.rb has extension rb
+01.17.17_variable_scope.rb has extension rb
+01.19.17_user_input_ex_ch2ex1to4.rb has extension rb
+01.22.17_variable_scope_ch2ex5and6.rb has extension rb
+01.23.17_methods.rb has extension rb
+01.30.17_method_ex_ch3.rb has extension rb
+02.01.17_flow_control.rb has extension rb
+02.01.17_flow_control_ex_ch4.rb has extension rb
+02.06.17_loops_and_iterators.rb has extension rb
+02.10.17_loops_and_iterators_exercises.rb has extension rb
+02.14.17_arrays.rb has extension rb
+02.19.17_arrays_exercises.rb has extension rb
+02.20.17_hashes.rb has extension rb
+02.23.17_hash_exercises.rb has extension rb
+02.25.17_files.rb has extension rb
+anagram1.rb has extension rb
+anagram2.rb has extension rb
+anagram_exercise.rb has extension rb
+fizzbuzz.rb has extension rb
+test.rb has extension rb
+=> nil
+
+=end
