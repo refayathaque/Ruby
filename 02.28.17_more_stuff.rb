@@ -43,7 +43,7 @@ doesthestringhavea_s_or_t("tilapia") # Match
 =begin
 In addition to the =~ operator we can also use the String#match method to
 do REGEX comparisons. This method returns a `MatchData` object that
-describes the match or `nil` if there is not match.
+describes the match or `nil` if there is no match.
 
 [1] pry(main)> /s/.match("mississippi")
 => #<MatchData "s">
@@ -76,3 +76,52 @@ to look into using REGEX.
 =end
 
 # RUBY STANDARD CLASSES
+
+=begin
+It's important to keep in mind that whenever we want to perform a specific
+action we should explore Ruby's standard classes. IE Using libraries like
+the `Math` module will help us to solve problems more efficiently. Let's
+try out a few examples below.
+
+[1] pry(main)> Math.sqrt(36)
+=> 6.0
+
+[3] pry(main)> Math::PI # The module also has constants like 'Pi'
+=> 3.141592653589793
+
+We can use the 'Time' class to figure out what day it was in the past.
+
+[4] pry(main)> t = Time.new(2017, 2, 28)
+=> 2017-02-28 00:00:00 -0500
+[5] pry(main)> t.monday?
+=> false
+[6] pry(main)> t.tuesday?
+=> true
+
+=end
+
+# VARIABLES AS POINTERS
+
+=begin
+Let's take a deeper look at variables, and how they act as POINTERs to a
+place in memory.
+
+a = "hi there"
+b = a
+a = "not here"
+
+What is 'b'? That's right, 'b' is "hi there"
+
+a = "hi there"
+b = a
+a << ", Bob"
+
+What is 'b' in this new example? 'b' is actually "hi there, Bob"
+
+We see that 'b' doesn't reflect the value of 'a' in the first example,
+but does so in the second example. Why? To see why this happens we have
+to understand that VARIABLES ARE POINTERS TO PHYSICAL SPACE IN MEMORY.
+(Variables are essentially labels we create to refer to some physical
+memory address in your computer.)
+
+=end
