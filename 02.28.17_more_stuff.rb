@@ -124,4 +124,38 @@ to understand that VARIABLES ARE POINTERS TO PHYSICAL SPACE IN MEMORY.
 (Variables are essentially labels we create to refer to some physical
 memory address in your computer.)
 
+* Detailed notes are in blog 03.05.17 entry.
+
+Let's see this in play with two methods.
+=end
+
+def test(b)
+  b.map {|letter| "I like the letter: #{letter}"} # NOT mutating caller
+end
+
+a = ['a', 'b', 'c']
+test(a)
+puts a # Outputs 'a', 'b', and 'c'
+
+puts "----"
+
+def test(b)
+  b.map! {|letter| "I like the letter: #{letter}"} # mutating caller
+end
+
+a = ['a', 'b', 'c']
+test(a)
+puts a # Outputs 'I like the letter: a', 'I like the letter: b', and
+       # 'I like the letter: c'
+
+=begin
+When we pass an argument into a method, we're essentially assigning a
+variable to another variable (like b = a in the previous example). Both
+the variables are pointing to the same physical space in memory. If the
+method is destructive then both the variables are pointing to the same
+physical space in memory with a modified value. If the method is NOT
+destructive then both variables point to the same unmodified physical
+space in memory. Working with 'b' above in our 'test' method may or may
+not modify the 'a' in the outer scope, it depends on whether or not we
+modify the physical space in memory that 'a' is pointing to.
 =end
