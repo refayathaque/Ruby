@@ -507,10 +507,13 @@ puts "Lift Off!"
 As a documentation convention, methods are listed out with either '::' or '#' to
 indicate two different kinds of publicly accessible methods. Methods denoted by
 '::' are considered CLASS methods, while methods denoted by '#' are considered
-INSTANCE methods. IE 'flatten!' is DEFINED by Array (a CLASS), and therefore is
-considered an INSTANCE method, and is called by INSTANCEs of the Array class.
-CLASS methods on the other hand (like iterator 'each') are called on the CLASS
-itself. So we would refer to 'flatten!' as 'Array#flatten!'' and 'each' as '::each'.
-*** When we refer to Array the class we must capitalize. 'Array', not 'array',
+INSTANCE methods. IE '.flatten!' is DEFINED by Array (a CLASS) and is
+considered an INSTANCE method. '.flatten!' is called by INSTANCEs of the Array 
+class. (INSTANCE methods are called on the OBJECTS themseleves, IE with 
+String#split we can do "hello".split and that'll return ["h", "e", "l", "l", "o"])
+CLASS methods on the other hand, like Array::new, are called on the CLASS
+itself. (IE Array.new) We would refer to '.flatten!' as 'Array#flatten!'' and 
+'.new' as 'Array::new' when speaking in terms of documentation. 
+*** When we refer to Array the class we must capitalize, 'Array', not 'array'.
 'array' refers to a variable 'array'.
 =end
