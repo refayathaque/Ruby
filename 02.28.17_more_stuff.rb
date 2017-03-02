@@ -159,3 +159,104 @@ space in memory. Working with 'b' above in our 'test' method may or may
 not modify the 'a' in the outer scope, it depends on whether or not we
 modify the physical space in memory that 'a' is pointing to.
 =end
+
+# BLOCKS AND PROCS
+
+=begin
+Blocks, just like parameters, can be passed into a method. The ampersand
+(&) in the method definition tells us that the argument is a block. The
+block must always be the last parameter in the method definition. When
+we're ready to use the method we call it like any other method, however,
+since our method will accept blocks, we can pass in a block using do..end.
+Let's see an example of this.
+=end
+
+def take_block(&block)
+  block.call # Method#call
+end
+
+take_block do
+  puts "Block being called in the method!"
+end
+
+puts "----"
+
+# Let's try something harder, let's pass an argument AND a block.
+
+def take_block(number, &block)
+  block.call(number) # Method#call
+end
+
+number = 42
+take_block(number) do |num|
+  puts "Block being called in the method! #{num}"
+end
+
+puts "----"
+
+=begin
+Procs are blocks that are wrapped in a prob object and store in a variable
+to be passed around. Let's try this out.
+=end
+
+talk = Proc.new do
+  puts "I am talking."
+end
+
+talk.call # Proc#call
+
+puts "----"
+
+# Procs can also take arguments.
+
+talk = Proc.new do |name|
+  puts "I am talking to #{name}"
+end
+
+talk.call "Refayat"
+
+puts "----"
+
+# Procs can also be passed into methods.
+
+def take_proc(proc)
+  array = [2, 4, 6, 8, 10]
+  array.each do |number|
+    proc.call number
+  end
+end
+
+proc = Proc.new do |number|
+  power = number**number
+  puts "#{number} to the power of #{number} is #{power}"
+end
+
+take_proc(proc)
+
+=begin
+2 to the power of 2 is 4
+4 to the power of 4 is 256
+6 to the power of 6 is 46656
+8 to the power of 8 is 16777216
+10 to the power of 10 is 10000000000
+
+Procs give us the added flexibility to be able to reuse blocks in more
+than one place without having to type them out every time.
+=end
+
+# EXCEPTION HANDLING
+
+=begin
+Exception handling allows us to deal with errors in a manageable and
+predictable way. When our programs will be interacting with the real
+world, there will be a large amount of unpredictibility. Users can
+enter bad information, or a file-manipulating process can get corrupted.
+What do we do in such instances? Our program must to know what to do when
+running into these kinds of exceptional conditions. Ruby has an
+`Exception` class that makes handling errors much easier, and also
+syntactic structure with reserved words `begin`, `rescue`, and `end` to
+signify exception handling. A common occurence of an error is when we
+get a 'nil' value, and we can use the reserved words mentioned above to
+prevent our program from crashing when it encounters a 'nil'. Let's
+try out a couple of examples below.
+=end
