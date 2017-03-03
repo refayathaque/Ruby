@@ -383,3 +383,19 @@ occured due to the call made in the 'main' context on line 6, which
 contains the line that called the method with incorrect arguments.
 
 =end
+
+# *** First time seeing a method intertwined with TWO other methods.
+
+def space_out_letters(person)
+  return person.chars.join(" ")
+end
+
+def greet(person)
+  return "H e l l o, " + space_out_letters(person)
+end
+
+def decorate_greeting(person)
+  puts greet(person)
+end
+
+decorate_greeting("John")
