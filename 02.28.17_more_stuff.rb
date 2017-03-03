@@ -244,6 +244,8 @@ Procs give us the added flexibility to be able to reuse blocks in more
 than one place without having to type them out every time.
 =end
 
+puts "----"
+
 # EXCEPTION HANDLING
 
 =begin
@@ -260,3 +262,62 @@ get a 'nil' value, and we can use the reserved words mentioned above to
 prevent our program from crashing when it encounters a 'nil'. Let's
 try out a couple of examples below.
 =end
+
+names = ['bob', 'joe', 'steve', nil, 'frank']
+
+names.each do |name|
+  begin
+    puts "#{name}'s name hash #{name.length} letters in it."
+  rescue # Code below is executed in case there's an exception, 'error'
+         # in this case because of the 'nil' value in the array. In the
+         # event of an exception code below is executed and program
+         # continues running, instead of crashing.
+    puts "SOMETHING WENT WRONG!"
+  end
+end
+
+puts "----"
+
+zero = 0
+puts "Before each call"
+zero.each { |element| puts element } rescue puts "CAN'T DO THAT!"
+puts "After each call"
+
+=begin
+What is output here is:
+
+Before each call
+Can't do that! # Because variable zero is NOT an array, it can't be
+               # iterated on with Array#each. In lieu of an 'error' we
+               # get the string "Can't do that!", because of 'rescue'
+               # and the code following it which is printing the string
+               # "Can't do that!".
+After each call
+
+We can see why the reserved word 'rescue' is relevant in both cases,
+we are effectively rescuing our program from crashing. If we gave the
+code above the correct variable (an Array), and the code above that a
+string instead of "nil" in the Array, our 'rescue' blocks wouldn't get
+executed and our outputs would be different.
+=end
+
+puts "----"
+
+# Another example
+
+def divide(number, divisor) # Notice how we have two parameters, this is
+                            # new. We've always had one parameter, and
+                            # most recently in this chapter, one parameter
+                            # and a block under PROCs.
+  begin
+    answer = number / divisor
+  rescue ZeroDivisionError => e
+    e.message # Exception#message
+  end
+end
+
+puts divide(16, 4)
+puts divide(4, 0)
+puts divide(14, 7)
+
+puts "----"
