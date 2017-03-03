@@ -321,3 +321,65 @@ puts divide(4, 0)
 puts divide(14, 7)
 
 puts "----"
+
+=begin
+In Ruby, when something goes wrong, we usually say "AN EXCEPTION IS
+RAISED". This is a common technical phrase used to say that the code
+encountered some sort of error condition.
+=end
+
+# EXCEPTIONS AND STACK TRACES
+
+=begin
+
+We must be able to parse through error conditions to find clues that will
+help us in identifying the sources of problems.
+
+Before progressing we need to understand how execution works within Ruby
+involving the STACK. So what is the STACK? When Ruby invokes a method,
+the method is added to Ruby's STACK. We can use the STACK TRACE (detailed
+trace) to see the flow of execution and where errors occur. We'll do an
+example below to show the STACK and STACK TRACE.
+=end
+
+def greet(person)
+  puts "Hello, " + person
+end
+
+greet("John")
+# greet(1)
+
+=begin
+Running the method above passing in both the arguments will output:
+
+Hello, John
+test.rb:2:in `+': no implicit conversion of Fixnum into String (TypeError)
+	from test.rb:2:in `greet'
+	from test.rb:6:in `<main>'
+
+When we called greet("John") the STACK, or program execution, looked like
+this:
+
+main -> greet -> puts -> exit and return to main
+
+When we called greet(1) the STACK looked like this:
+
+main -> greet -> puts
+
+So from the STACK above we can see that in the second method invocation,
+greet(1), an error occurred and the program execution flow didn't exit
+back to 'main', and stayed in the 'greet' method.
+
+Now, we will look at the STACK TRACE to make sense of what exactly went
+wrong. The STACK TRACE is below.
+
+test.rb:2:in `+': no implicit conversion of Fixnum into String (TypeError)
+	from test.rb:2:in `greet'
+	from test.rb:6:in `<main>'
+
+The STACK TRACE above tells us where the error occured and why: line 2
+of the file and the error was because the types don't match. The error
+occured due to the call made in the 'main' context on line 6, which
+contains the line that called the method with incorrect arguments.
+
+=end
