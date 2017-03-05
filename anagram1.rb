@@ -1,7 +1,7 @@
 array = ['demo', 'none', 'tied', 'evil', 'dome','mode','live',
   'fowl', 'veil', 'wolf', 'diet', 'vile', 'edit', 'tide',
   'flow', 'neon']
-hash = {} # Will get populated by block below
+hash = {}
 
 array.each do |element|
   key = element.chars.sort.join
