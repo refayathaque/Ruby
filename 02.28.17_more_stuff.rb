@@ -270,7 +270,7 @@ names.each do |name|
     puts "#{name}'s name hash #{name.length} letters in it."
   rescue # Code below is executed in case there's an exception, 'error'
          # in this case because of the 'nil' value in the array. In the
-         # event of an exception code below is executed and program
+         # event of an exception, code below is executed and program
          # continues running, instead of crashing.
     puts "SOMETHING WENT WRONG!"
   end
