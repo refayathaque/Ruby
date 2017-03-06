@@ -284,7 +284,7 @@ zero.each { |element| puts element } rescue puts "CAN'T DO THAT!"
 puts "After each call"
 
 =begin
-What is output here is:
+Output:
 
 Before each call
 Can't do that! # Because variable zero is NOT an array, it can't be
