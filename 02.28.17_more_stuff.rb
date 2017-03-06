@@ -278,6 +278,8 @@ end
 
 puts "----"
 
+# Another example
+
 zero = 0
 puts "Before each call"
 zero.each { |element| puts element } rescue puts "CAN'T DO THAT!"
