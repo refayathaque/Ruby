@@ -57,3 +57,29 @@ checklab("elaborate")
 checklab("polar bear")
 
 puts "----"
+
+# 2. What will the following program print to the screen? What will it return?
+
+def execute(&block)
+  block
+end
+
+execute { puts "Hello from inside the execute method!" }
+
+# Nothing printed because nothing is called on the variable 'block'.
+# Returns Proc object #<Proc:0x007f97b284da90@(pry):10>.
+
+# We can fix ^ by calling the method Proc#call on the variable 'block'.
+
+def execute(&block)
+  block.call
+end
+
+execute { puts "Hello from inside the execute method!" }
+
+# Prints "Hello from inside the execute method!"
+# Returns 'nil' because IO#puts always returns 'nil'.
+
+# *** Remember the AMPERSAND sign (&) before 'block' in the parameter! The
+# method parameter 'block' with '&' before it (&block) is what allows a
+# block to be passed as a parameter.
