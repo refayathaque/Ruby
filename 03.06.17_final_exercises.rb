@@ -77,3 +77,39 @@ puts "----"
 
 # 4. Append "11" to the end of the original array. Prepend "0" to the
 # beginning.
+
+p numbers.push(11)
+p numbers # Just to show that Array#push is destructive.
+
+puts "----"
+
+p numbers.unshift(0)
+p numbers # Just to show that Array#unshift is destructive.
+
+puts "----"
+
+# 5. Get rid of "11". And append a "3".
+
+numbers.pop # or numbers.delete(11) or numbers.delete_at(11)
+p numbers.push(3)
+
+puts "----"
+
+# 6. Get rid of duplicates without specifically removing any one value.
+
+p numbers.uniq!
+
+puts "----"
+
+# 8. Create a Hash (key-value pairs) using both Ruby syntax styles.
+
+hashnew = { 'Aston Martin': 'DB5', 'BMW': 'E32M3', 'Ferrari': 'F12Berlinetta'}
+p hashnew
+hashold = { :'Aston Martin'=> 'DB5', :'BMW'=> 'E32M3', :'Ferrari'=> 'F12Berlinetta'}
+p hashold
+
+puts "----"
+
+# 9. Suppose you have a hash `h = {a:1, b:2, c:3, d:4}`. Get the value of
+# key `:b`, add to the hash the key:value pair `{e:5}`, then remove all
+# key:value pairs whose value is less than 3.5
