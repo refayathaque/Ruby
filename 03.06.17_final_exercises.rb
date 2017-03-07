@@ -20,9 +20,6 @@ end
 # 3. Now, using the same array above, use the `select` method to extract all
 # odd numbers into a new array.
 
-# 3. Now, using the same array above, use the `select` method to extract all
-# odd numbers into a new array.
-
 # There are a few ways to do this...
 
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -52,6 +49,36 @@ p numbers.select do |element| # Oddly, this doesn't work, even though it's
 end
 
 puts "---"
+
+p ( numbers.select do |element| # It works with the block in parentheses...
+  element.odd?
+end )
+
+=begin
+* Still don't understand this...03/07/17
+
+"Curly braces have a high precedence; do..end has a low precedence. If the
+method invocation has parameters that are not enclosed in parentheses, the
+brace form of a block will bind to the last parameter, not to the overall
+invocation. The do..end form will bind to the invocation."
+- http://phrogz.net/ProgrammingRuby/language.html#blocksclosuresandprocobjects
+
+Without the parentheses Ruby interprets the do..end block as:
+
+`p (numbers.select) do |element|`.
+
+We get Enumerator because it sees no block, it only sees `p (numbers.select)`.
+It's printing an Enumerator and then passing a block that isn't used.
+The do..end version gives the block to 'p' and not 'select'. It's calling
+`p numbers.select` before the block is being evaluated.
+
+'Precedence' can be thought of a little like arithmatic: the result of
+(3 + 10 * 2) is 23, because MULTIPLICATION has a higher precidence than ADDITION
+according to BODMAS/PEMDAS, and so the MULTIPLICATION expression gets evaluated
+first. {} blocks have higher precedence than do..end blocks.
+=end
+
+puts "----"
 
 # Can also be done using the Modulo operator
 
