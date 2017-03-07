@@ -1,3 +1,25 @@
+# 1. Use the `each` method of Array to iterate over [1, 2, 3, 4, 5, 6, 7, 8
+# 9, 10] and print out each value.
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+numbers.each do |element|
+  puts element
+end
+
+puts "---"
+
+# 2. Same as above, but only print out values greater than 5.
+
+numbers.each do |element|
+  if element > 5
+    puts element
+  end
+end
+
+# 3. Now, using the same array above, use the `select` method to extract all
+# odd numbers into a new array.
+
 # 3. Now, using the same array above, use the `select` method to extract all
 # odd numbers into a new array.
 
@@ -50,3 +72,8 @@ numbers.each do |element|
 end
 
 p odd
+
+puts "----"
+
+# 4. Append "11" to the end of the original array. Prepend "0" to the
+# beginning.
