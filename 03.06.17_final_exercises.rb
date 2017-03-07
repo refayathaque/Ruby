@@ -140,3 +140,31 @@ puts "----"
 # 9. Suppose you have a hash `h = {a:1, b:2, c:3, d:4}`. Get the value of
 # key `:b`, add to the hash the key:value pair `{e:5}`, then remove all
 # key:value pairs whose value is less than 3.5
+
+hash = {a:1, b:2, c:3, d:4}
+
+p hash[:b]
+
+hash[:e] = 5
+p hash
+
+hash.delete_if do |key, value|
+  value < 3.5
+end
+p hash
+
+puts "----"
+
+# 10. Can hash values be arrays? Can you have an array of hashes? Give
+# examples.
+
+hashwitharrayvalues = {a: [1, 2, 3], b: [4, 5, 6]}
+arraywithhashvalues = [{a:1}, {b:2}]
+p hashwitharrayvalues
+p arraywithhashvalues
+
+puts "----"
+
+# Given the following data structures. Write a program that moves the
+# information from the array into the empty hash that applies to the correct
+# person.
