@@ -334,3 +334,13 @@ p people
 # "Sally Johnson". So our hash 'people' has two key-value pairs
 # ("Joe Smith": {}, and "Sally Johnson": {}) with THEIR values being hashes
 # with key-value pairs (emailaddress: "joe@email.com", etc.) INSIDE them.
+
+puts "----"
+
+# Using the hash you created from the previous exercise, demonstate how
+# you would access Joe's email and Sally's phone number.
+
+puts "Joe's email address is #{people["Joe Smith"][:emailaddress]}"
+puts "Sally's phone number is #{people["Sally Johnson"][:phonenumber]}"
+
+puts "----"
