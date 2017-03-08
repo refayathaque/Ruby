@@ -279,3 +279,58 @@ name_and_age.values.each { |element| puts element}
 # Prints "42, 31, 19"
 
 puts "----"
+
+# *** Very useful example...
+
+# Given the following data structures. Write a program that moves the
+# information from the array into the empty hash that applies to the correct
+# person.
+
+contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
+["sally@email.com", "404 Not Found Dr.", "123-234-3454"]]
+
+contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+
+contact_data.each do |element|
+  if element.include?("joe@email.com")
+    contacts["Joe Smith"] = element
+  else
+    contacts["Sally Johnson"] = element
+  end
+end
+
+p contacts
+
+puts "----"
+
+=begin
+Output:
+{"Joe Smith"=>["joe@email.com", "123 Main st.", "555-123-4567"],
+"Sally Johnson"=>["sally@email.com", "404 Not Found Dr.", "123-234-3454"]}
+
+So we just moved the array elements (which are also arrays) to their respective
+owners. But what if we wanted to have labels for the pieces of information? IE
+'email address', 'address', and 'phone number'? We have to take another
+approach. Let's try it out below.
+=end
+
+contactdata = [["joe@email.com", "123 Main st.", "555-123-4567"],
+["sally@email.com", "404 Not Found Dr.", "123-234-3454"]]
+
+people = {"Joe Smith" => {}, "Sally Johnson" => {}}
+
+people["Joe Smith"][:emailaddress] = contactdata[0][0]
+people["Joe Smith"][:homeaddress] = contactdata[0][1]
+people["Joe Smith"][:phonenumber] = contactdata[0][2]
+people["Sally Johnson"][:emailaddress] = contactdata[1][0]
+people["Sally Johnson"][:homeaddress] = contactdata[1][1]
+people["Sally Johnson"][:phonenumber] = contactdata[1][2]
+
+p people
+
+# We created NEW key-value pairs INSIDE the hashes that act as values to the
+# keys "Joe Smith" and "Sally Johnson", instead of just inserting the
+# elements (arrays containing our information) into the keys "Joe Smith" and
+# "Sally Johnson". So our hash 'people' has two key-value pairs
+# ("Joe Smith": {}, and "Sally Johnson": {}) with THEIR values being hashes
+# with key-value pairs (emailaddress: "joe@email.com", etc.) INSIDE them.
