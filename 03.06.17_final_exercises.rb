@@ -227,3 +227,27 @@ puts "Joe's email address is #{people["Joe Smith"][:emailaddress]}"
 puts "Sally's phone number is #{people["Sally Johnson"][:phonenumber]}"
 
 puts "----"
+
+# 14. In exercise 12, we manually set the contacts hash values one by one.
+# Now, programmatically loop or iterate over the contacts hash from exercise
+# 12, and populate the associated data from the contact_data array. Hint:
+# you will probably need to iterate over ([:email, :address, :phone]), and
+# some helpful methods might be the Array shift and first methods.
+
+contact_datab = ["joe@email.com", "123 Main st.", "555-123-4567"]
+
+contactsb = {"Joe Smith" => {}}
+
+contact_datab.each do |element|
+  if contact_datab[0] == element
+    contactsb["Joe Smith"][:email] = element
+  elsif contact_datab[1] == element
+    contactsb["Joe Smith"][:address] = element
+  else
+    contactsb["Joe Smith"][:phone] = element
+  end
+end
+
+p contactsb
+
+# Above is one way to do it, but we didn't use the suggested methods.
