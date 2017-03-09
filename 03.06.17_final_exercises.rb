@@ -273,3 +273,35 @@ puts "----"
 # Here we used Array#first, now let's try with Array#shift.
 # Ok, everything up top is NOT what this problem is asking for, let's try
 # again below. -_-
+
+hash = {"Joe Smith"=>{}}
+
+array = ["joe@email.com", "123 Main st.", "555-123-4567"]
+
+labelarray = [:email, :address, :phone]
+
+hash.each do |key, value|
+  value[labelarray.shift] = array.first
+  value[labelarray.shift] = array[1]
+  value[labelarray.shift] = array.last
+end
+
+p hash
+
+puts "----"
+
+# Another way with ONLY Array#shift.
+
+hash = {"Joe Smith"=>{}}
+
+array = ["joe@email.com", "123 Main st.", "555-123-4567"]
+
+labelarray = [:email, :address, :phone]
+
+hash.each do |key, value|
+  value[labelarray.shift] = array.shift
+  value[labelarray.shift] = array.shift
+  value[labelarray.shift] = array.shift
+end
+
+p hash
