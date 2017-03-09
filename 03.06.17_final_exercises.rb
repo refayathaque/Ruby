@@ -268,4 +268,8 @@ end
 
 p contactsc
 
+puts "----"
+
 # Here we used Array#first, now let's try with Array#shift.
+# Ok, everything up top is NOT what this problem is asking for, let's try
+# again below. -_-
