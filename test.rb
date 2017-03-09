@@ -1,52 +1,15 @@
-# 3. Now, using the same array above, use the `select` method to extract all
-# odd numbers into a new array.
+contact_datab = ["joe@email.com", "123 Main st.", "555-123-4567"]
 
-# There are a few ways to do this...
+contactsb = {"Joe Smith" => {}}
 
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-# Using Integer#odd?
-
-newarray1 = numbers.select { |element| element.odd? }
-p newarray1
-
-puts "----"
-
-newarray2 = numbers.select do |element|
-  element.odd?
-end
-p newarray2
-
-puts "----"
-
-p numbers.select { |element| element.odd? }
-
-puts "----"
-
-p numbers.select do |element| # Oddly, this doesn't work, even though it's
-                              # exactly the same as the block above, just
-                              # multi-line. We get Enumerator.
-  element.odd?
-end
-
-puts "---"
-
-# Can also be done using the Modulo operator
-
-p numbers.select { |element| element % 2 != 0 }
-# Any integer divided by 2 with NO REMAINDERs will be even, but any integer
-# divided by 2 WITH REMAINDERs will be odd, hence the block above with '!='.
-
-puts "----"
-
-# Can also be done another way using Array#each.
-
-odd = []
-
-numbers.each do |element|
-  if element.odd?
-    odd.push(element)
+contact_datab.each do |element|
+  if contact_datab[0] == element
+    contactsb["Joe Smith"][:email] = element
+  elsif contact_datab[1] == element
+    contactsb["Joe Smith"][:address] = element
+  else
+    contactsb["Joe Smith"][:phone] = element
   end
 end
 
-p odd
+p contactsb

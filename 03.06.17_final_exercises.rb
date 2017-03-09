@@ -251,3 +251,21 @@ end
 p contactsb
 
 # Above is one way to do it, but we didn't use the suggested methods.
+
+contact_datac = ["joe@email.com", "123 Main st.", "555-123-4567"]
+
+contactsc = {"Joe Smith" => {}}
+
+contact_datac.each do |element|
+  if contact_datac.first == element
+    contactsc["Joe Smith"][:email] = element
+  elsif contact_datac.last == element
+    contactsc["Joe Smith"][:phone] = element
+  else
+    contactsc["Joe Smith"][:address] = element
+  end
+end
+
+p contactsc
+
+# Here we used Array#first, now let's try with Array#shift.
