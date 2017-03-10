@@ -6,9 +6,9 @@ hash = {}
 array.each do |element|
   key = element.chars.sort.join
   if hash.has_key?(key)
-    hash[key].push(element)
+    hash[key].push(element) # Inserting element into ARRAY, NOT HASH
   else
-    hash[key] = [element]
+    hash[key] = [element] # ^ Inserting into this ARRAY
   end
 end
 
