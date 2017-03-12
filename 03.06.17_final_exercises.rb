@@ -316,9 +316,27 @@ arrayabc = ["joe@email.com", "123 Main st.", "555-123-4567"]
 
 labelarrayabc = [:email, :address, :phone]
 
-hashabc.each do |key, value|
+hashabc.each do |key, _| # _ since we don't use 'value'
   labelarrayabc.each do |element|
-    hashabc["Joe Smith"][element] = arrayabc.shift
+    hashabc[key][element] = arrayabc.shift
+  end
+end
+
+p hashabc
+
+puts "----"
+
+# Can also do...
+
+hashabc = {"Joe Smith"=>{}}
+
+arrayabc = ["joe@email.com", "123 Main st.", "555-123-4567"]
+
+labelarrayabc = [:email, :address, :phone]
+
+hashabc.each do |_, value|
+  labelarrayabc.each do |element|
+    value[element] = arrayabc.shift
   end
 end
 
