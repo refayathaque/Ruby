@@ -344,3 +344,41 @@ puts "Joe's email address is #{people["Joe Smith"][:emailaddress]}"
 puts "Sally's phone number is #{people["Sally Johnson"][:phonenumber]}"
 
 puts "----"
+
+# In the example above we manually inserted the data into the hash, but what
+# if we wanted to PROGRAMATICALLY insert the data into the hash? How would
+# we go about doing that? We will need to do a 'LOOP INSIDE A LOOP'.
+
+contacthash = {"Joe Smith"=>{}}
+
+contactarray = ["joe@email.com", "123 Main st.", "555-123-4567"]
+
+labelarray = [:email, :address, :phone]
+
+contacthash.each do |key, _| # _ since we don't use 'value' in this block
+  labelarray.each do |element|
+    contacthash[key][element] = contactarray.shift
+  end
+end
+
+p contacthash
+
+puts "----"
+
+# There's another way we can do this...
+
+contacthasha = {"Joe Smith"=>{}}
+
+contactarraya = ["joe@email.com", "123 Main st.", "555-123-4567"]
+
+labelarraya = [:email, :address, :phone]
+
+contacthasha.each do |_, value| # _ since we don't use 'key' in this block
+  labelarraya.each do |element|
+    value[element] = contactarraya.shift
+  end
+end
+
+p contacthasha
+
+puts "----"
