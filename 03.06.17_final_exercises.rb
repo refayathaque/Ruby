@@ -271,8 +271,9 @@ p contactsc
 puts "----"
 
 # Here we used Array#first, now let's try with Array#shift.
-# Ok, everything up top is NOT what this problem is asking for, let's try
-# again below. -_-
+
+# (Ok, everything up top is NOT what this problem is asking for, let's try
+# again below. -_-)
 
 hash = {"Joe Smith"=>{}}
 
@@ -308,7 +309,9 @@ p hash
 
 puts "----"
 
-# I think I finally figured this out...
+# I think I finally figured this out...what we needed to do this whole time
+# was a 'LOOP INSIDE A LOOP'. This discovery came courtesy of my good friend
+# Zac, who facilitated our StartupWeekend event on March 10-12.
 
 hashabc = {"Joe Smith"=>{}}
 
@@ -316,7 +319,7 @@ arrayabc = ["joe@email.com", "123 Main st.", "555-123-4567"]
 
 labelarrayabc = [:email, :address, :phone]
 
-hashabc.each do |key, _| # _ since we don't use 'value'
+hashabc.each do |key, _| # _ since we don't use 'value' in this block
   labelarrayabc.each do |element|
     hashabc[key][element] = arrayabc.shift
   end
@@ -326,7 +329,7 @@ p hashabc
 
 puts "----"
 
-# Can also do...
+# Can also do... (This is the SOLUTION, as code is much simpler on line 342)
 
 hashabc = {"Joe Smith"=>{}}
 
@@ -334,10 +337,41 @@ arrayabc = ["joe@email.com", "123 Main st.", "555-123-4567"]
 
 labelarrayabc = [:email, :address, :phone]
 
-hashabc.each do |_, value|
+hashabc.each do |_, value| # _ since we don't use 'key' in this block
   labelarrayabc.each do |element|
-    value[element] = arrayabc.shift
+    value[element] = arrayabc.shift # Difference with example above...
   end
 end
 
 p hashabc
+
+puts "----"
+
+# 14b. See if you can figure out how to make it work with multiple entries
+# in the contacts hash.
+
+contactsarray = [["joe@email.com", "123 Main st.", "555-123-4567"],
+            ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]]
+
+contactshash = {"Joe Smith" => {}, "Sally Johnson" => {}}
+
+labelsarray = [:email, :address, :phone]
+
+contactshash.each do |key, value|
+  contactsarray.flatten!
+  labelsarray.each do |element|
+    value[element] = contactsarray.shift
+  end
+end
+
+p contactshash
+
+=begin
+Output:
+{"Joe Smith"=>{:email=>"joe@email.com", :address=>"123 Main st.",
+  :phone=>"555-123-4567"},
+    "Sally Johnson"=>{:email=>"sally@email.com",
+      :address=>"404 Not Found Dr.", :phone=>"123-234-3454"}}
+=end
+
+puts "----"
