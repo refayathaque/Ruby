@@ -375,7 +375,7 @@ labelarraya = [:email, :address, :phone]
 
 contacthasha.each do |_, value| # _ since we don't use 'key' in this block
   labelarraya.each do |element|
-    value[element] = contactarraya.shift
+    value[element] = contactarraya.shift # Difference is here...
   end
 end
 
