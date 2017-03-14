@@ -375,10 +375,42 @@ labelarraya = [:email, :address, :phone]
 
 contacthasha.each do |_, value| # _ since we don't use 'key' in this block
   labelarraya.each do |element|
-    value[element] = contactarraya.shift # Difference is here...
+    value[element] = contactarraya.shift # Difference with example above...
   end
 end
 
 p contacthasha
+
+puts "----"
+
+# What if we wanted to do something similar but insert data into more than
+# one key-value pair in a hash? Our process would be almost the same as above
+# except for one key difference, and that is in line 398.
+
+contactsarray = [["joe@email.com", "123 Main st.", "555-123-4567"],
+            ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]]
+# Here we have two arrays IN AN array
+
+contactshash = {"Joe Smith" => {}, "Sally Johnson" => {}}
+
+labelsarray = [:email, :address, :phone]
+
+contactshash.each do |key, value|
+  contactsarray.flatten! # This method allows us to insert data into more
+                         # than one key-value pair.
+  labelsarray.each do |element|
+    value[element] = contactsarray.shift
+  end
+end
+
+p contactshash
+
+=begin
+Output:
+{"Joe Smith"=>{:email=>"joe@email.com", :address=>"123 Main st.",
+  :phone=>"555-123-4567"},
+    "Sally Johnson"=>{:email=>"sally@email.com",
+      :address=>"404 Not Found Dr.", :phone=>"123-234-3454"}}
+=end
 
 puts "----"
