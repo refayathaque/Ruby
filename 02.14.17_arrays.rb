@@ -453,3 +453,31 @@ names = ['George', 'Bernard', 'Margaret', 'Abigail']
 names[2] = 'Jody'
 
 p names # Outputs ['George', 'Bernard', 'Jody', 'Abigail']
+
+puts "----"
+
+=begin
+Let's discuss the difference between Array#each and Array#map.
+
+Array#each executes the given block for each element of the array, then
+returns the array itself.
+
+Array#map also executes the given block for each element of the array, but
+returns a NEW array whose values are the return values of each iteration of
+the block.
+=end
+
+cities = ['moscow', 'lima', 'bangkok', 'helsinki']
+
+a = cities.each { |element| element.capitalize }
+
+p a # Outputs ["moscow", "lima", "bangkok", "helsinki"], Array#each is just
+    # returning the array that was iterated over.
+
+puts "----"
+
+b = cities.map { |element| element.capitalize }
+
+p b # Outputs ["Moscow", "Lima", "Bangkok", "Helsinki"], Array#map returns a
+    # NEW array whose values are the return values of each iteration of
+    # the block.
