@@ -375,3 +375,35 @@ Output:
 =end
 
 puts "----"
+
+# 15. Take the array below and turn it into a new array that consists of
+# strings containing one word. IE ['white', 'snow', 'winter', etc.]. Look
+# into Array#map and Array#flatten methods, as well as String#split method.
+
+a = ['white snow', 'winter wonderland', 'melting ice', 'slippery sidewalk',
+  'salted roads', 'white trees']
+b = []
+
+a.map do |element| # We could have also iterated using Array#each, doesn't
+                   # make a difference in this particular problem.
+  b.push(element.split).flatten!
+end
+
+p b
+
+puts "----"
+
+# While our code above works, we did not do exactly what the problem had
+# specified, which is turning the array into a new array, NOT creating a
+# new array. So let's try again, this time we have to modify the existing
+# array.
+
+c = ['white snow', 'winter wonderland', 'melting ice', 'slippery sidewalk',
+  'salted roads', 'white trees']
+
+c = c.map { |element| element.split }
+c = c.flatten
+
+p c
+
+puts "----"
