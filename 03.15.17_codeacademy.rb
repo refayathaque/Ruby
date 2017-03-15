@@ -1,7 +1,7 @@
 # Example of USER INPUT REDACTION
 
 puts "Enter some text please."
-  text = gets.chomp
+  text = gets.chomp.downcase
 puts "What part of the text would you like to redact?"
   redact = gets.chomp
 
