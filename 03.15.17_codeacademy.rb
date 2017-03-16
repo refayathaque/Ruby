@@ -25,28 +25,48 @@ end
 # Example of a HISTOGRAM
 
 puts "Please enter some text"
-text = gets.chomp
+text = gets.chomp # "tomato tomato grape cherry apple apple apple"
 
-words = text.split(" ") # Returns an array ['tomato', 'tomato', 'grape',
-                        # 'cherry', 'apple', 'apple', 'apple']
+words = text.split(" ") # Returns an array... ['tomato', 'tomato', 'grape',
+                        # 'cherry', 'apple', 'apple', 'apple'] is 'words'.
 
-frequencies = Hash.new(0) # 0 is the default value, we need to have the default
-                          # value here as 0, of our code below. We need the
+frequencies = Hash.new(0) # 0 is the default value, and we need to have the default
+                          # value here as 0, because of our code below. We need the
                           # value in the hash to start from 0 so we can increment
                           # every time an element appears more than once.
 
 words.each do |element|
-  frequencies[element] += 1
+  frequencies[element] += 1 # Inserts element as key into key-value pairs, with
+                            # value being 0 as default. Every time the same
+                            # element is inserted the value is incremented.
 end
 
-p frequencies
+# Outputs {"tomato"=>2, "grape"=>1, "cherry"=>1, "apple"=>3}
 
+frequencies = frequencies.sort_by do |key, value|
+  value
+end
 
+# Enumerable#sort_by (ascending order of VALUES) returns a nested array.
+# 'frequencies' is now a nested array, because we are assigning this returned
+# nested array to the variable 'frequencies'.
 
+# Outputs [["grape", 1], ["cherry", 1], ["tomato", 2], ["apple", 3]]
 
+frequencies.reverse!
 
-#frequencies = frequencies.sort_by {|a, b| b }
-#frequencies.reverse!
-#frequencies.each { |word, frequency| puts word + " " + frequency.to_s }
+# With HISTOGRAMs you want the highest frequency to be listed first. So we must
+# use Array#reverse! This method will reverse the order of VALUES, and will
+# mutate the caller.
 
-# tomato tomato grape cherry apple apple apple
+# frequencies = [["apple", 3], ["tomato", 2], ["cherry", 1], ["grape", 1]]
+
+frequencies.each do |key, value|
+  puts key.capitalize + " " + value.to_s # OR "#{key.capitalize} #{value}"
+end
+
+# Outputs
+# Apple 3
+# Tomato 2
+# Cherry 1
+# Grape 1
