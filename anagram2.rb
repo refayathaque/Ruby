@@ -1,7 +1,7 @@
 array = ['demo', 'none', 'tied', 'evil', 'dome','mode','live',
   'fowl', 'veil', 'wolf', 'diet', 'vile', 'edit', 'tide',
   'flow', 'neon']
-hash = {}
+hash = Hash.new
 
 array.each do |element|
   key = element.split('').sort.join
@@ -12,6 +12,6 @@ array.each do |element|
   end
 end
 
-hash.each do |key, value|
+hash.each do |_, value|
   p value
 end
