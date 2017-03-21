@@ -76,10 +76,11 @@ end
 puts "----"
 
 # Example of a SPLAT ARGUMENTs in METHODs
+# *** Used when # of arguments is UNKNOWN
 
 def greetingtofriends(salutation, *friends) # Set up PARAMETERs for > 1 argument
   friends.each { |friend| puts "#{salutation} #{friend}!" }
-  # Arguments after "Hi" when calling the method are elements in an array.
+  # Arguments after "Hi" when calling the method are ELEMENTS in an ARRAY.
 end
 
 greetingtofriends("Hi", "Jeremy", "Janet", "John", "Jamie")
@@ -87,6 +88,18 @@ greetingtofriends("Hi", "Jeremy", "Janet", "John", "Jamie")
 # Outputs Hi Jeremy! Hi Janet! Hi John! Hi Jamie!
 
 # Splat arguments are preceded by *, which signals to Ruby: "Hey Ruby, I don't
-# know how many argumnets there are about to be, but it could be more than one."
+# know how many arguments there are about to be, but it could be more than one."
+
+puts "----"
+
+# But, if the # of arguments is KNOWN, we don't need SPLAT ARGUMENTs, we just
+# have MORE THAN ONE PLACEHOLDER as the PARAMETERs. Let's do an example below.
+
+def sumoftwonumbers(number1, number2)
+  return number1 + number2
+end
+
+output = sumoftwonumbers(3, 7)
+p output
 
 puts "----"
