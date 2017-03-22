@@ -117,7 +117,7 @@ p ascending
 # Outputs ["Acura", "Buick", "Chevrolet", "Honda", "Lexus", "Toyota"]
 
 descending = carbrands.sort! do |a, b|
-  b <=> a # Return value is -1
+  b <=> a
 end
 p descending
 # Outputs ["Toyota", "Lexus", "Honda", "Chevrolet", "Buick", "Acura"]
@@ -131,6 +131,10 @@ p ascendinglength
 # Outputs ["Lexus", "Honda", "Buick", "Acura", "Toyota", "Chevrolet"]
 
 puts "----"
+
+# Often times we'll have to make our own METHODs to do things that are not in
+# Ruby's built-in library, e.g. Ruby doesn't have a built-in way to sort data
+# in REVERSE alphabetical order.
 
 # EXAMPLE OF METHOD TO SORT IN REVERSE ALPHABETICAL ORDER
 
@@ -159,6 +163,34 @@ p resultASCENDING
 p "ABOVE: Ascending, BELOW: Descending"
 
 resultDESCENDING = alphabetize(words, words) # REVERSE ALPHABETICAL ORDER
+p resultDESCENDING
+# ["Jeremy", "Cassandra", "Bob", "Arthur", "Alastair"]
+
+puts "----"
+
+# What if we wanted to write the method above using SPACESHIP OPERATORs?
+
+def alphabetize1(arr, rev=false)
+    if rev!=false
+        arr.sort! do |a, b|
+          b <=> a # REVERSE ALPHABETICAL ORDER
+        end
+    else
+        arr.sort! do |a, b|
+          a <=> b
+        end
+    end
+end
+
+words = ["Bob", "Arthur", "Jeremy", "Cassandra", "Alastair"]
+
+resultASCENDING = alphabetize1(words)
+p resultASCENDING
+#["Alastair", "Arthur", "Bob", "Cassandra", "Jeremy"]
+
+p "ABOVE: Ascending, BELOW: Descending"
+
+resultDESCENDING = alphabetize1(words, words) # REVERSE ALPHABETICAL ORDER
 p resultDESCENDING
 # ["Jeremy", "Cassandra", "Bob", "Arthur", "Alastair"]
 
