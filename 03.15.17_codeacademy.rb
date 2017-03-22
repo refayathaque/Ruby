@@ -108,7 +108,7 @@ puts "----"
 
 # This can come in handy when sorting data, e.g. Array#sort! will only sort in
 # ASCENDING order, what if we want to sort in DESCENDING order WITHOUT having
-# to use Array#reverse! ? Let's see this below.
+# to use Array#reverse! in addition to Array#sort! ? Let's see this below.
 
 carbrands = ["Honda", "Acura", "Toyota", "Lexus", "Buick", "Chevrolet"]
 
@@ -129,5 +129,37 @@ ascendinglength = carbrands.sort! do |a, b|
 end
 p ascendinglength
 # Outputs ["Lexus", "Honda", "Buick", "Acura", "Toyota", "Chevrolet"]
+
+puts "----"
+
+# EXAMPLE OF METHOD TO SORT IN REVERSE ALPHABETICAL ORDER
+
+# Ruby, using Array#sort!, can sort alphabetically in ASCENDING order, but can't
+# do the same in DESCENDING order. *** (Array#reverse! will only reverse the
+# order WITHOUT SORTING).
+
+def alphabetize(arr, rev=false) # Default value will be false for SECOND
+                                # parameter if ONLY ONE argument is passed
+  arr.sort!
+    if rev!=false # Executes line below if TWO arguments are passed (passing TWO
+                  # arguments will sort the array in DESCENDING order).
+        arr.reverse!
+    else # Executes line below if ONE argument is passed (passing ONE argument
+         # will sort the array in ASCENDING order)
+        arr.sort!
+    end
+end
+
+words = ["Bob", "Arthur", "Jeremy", "Cassandra", "Alastair"]
+
+resultASCENDING = alphabetize(words) # Same as Array#sort!
+p resultASCENDING
+#["Alastair", "Arthur", "Bob", "Cassandra", "Jeremy"]
+
+p "ABOVE: Ascending, BELOW: Descending"
+
+resultDESCENDING = alphabetize(words, words) # REVERSE ALPHABETICAL ORDER
+p resultDESCENDING
+# ["Jeremy", "Cassandra", "Bob", "Arthur", "Alastair"]
 
 puts "----"
