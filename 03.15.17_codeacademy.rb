@@ -195,3 +195,18 @@ p resultDESCENDING
 # ["Jeremy", "Cassandra", "Bob", "Arthur", "Alastair"]
 
 puts "----"
+
+# If we create a hash using the CONSTRUCTOR NOTATION, we can specify a default
+# in case we try and access a nonexistent key. An example below.
+
+colorhash = Hash.new("Not in this hash")
+colorhash[:red] = "orange"
+colorhash[:blue] = "green"
+
+p colorhash # Outputs {:red=>"orange", :blue=>"green"}
+
+output = colorhash[:yellow]
+puts output # Outputs "Not in this hash", or default, as :yellow isn't one of
+            # the keys in the 'colorhash' hash.
+
+puts "----"
