@@ -210,3 +210,29 @@ puts output # Outputs "Not in this hash", or default, as :yellow isn't one of
             # the keys in the 'colorhash' hash.
 
 puts "----"
+
+# FILTERING HASH VALUES
+
+# We can use Hash#select to filter hash values that meet certain criteria, we
+# don't necessarily have to grab a specific value from a hash by specifying the
+# associated key. Let's look at a couple of examples below.
+
+grades = { alice: 100, bob: 92, chris: 95, dave: 97 }
+
+# Let's find out who got an A+, an A+ is 95 and above.
+
+output1 = grades.select { |name, grade| grade >= 95 }
+p output1 # Outputs {:alice=>100, :chris=>95, :dave=>97}
+output1.each do |key, _|
+  puts "#{key.capitalize} got an A+!"
+end
+
+# Now let's find out who in that particular group got a 100.
+
+onehundred = output1.select { |name, grade| grade == 100 }
+p onehundred
+onehundred.each do |key, _|
+  puts "#{key.capitalize} got a 100 in that group!"
+end
+
+puts "----"
