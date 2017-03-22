@@ -103,3 +103,31 @@ output = sumoftwonumbers(3, 7)
 p output
 
 puts "----"
+
+# SPACESHIP OPERATOR (COMBINED COMPARISON OPERATOR) EXAMPLE
+
+# This can come in handy when sorting data, e.g. Array#sort! will only sort in
+# ASCENDING order, what if we want to sort in DESCENDING order WITHOUT having
+# to use Array#reverse! ? Let's see this below.
+
+carbrands = ["Honda", "Acura", "Toyota", "Lexus", "Buick", "Chevrolet"]
+
+ascending = carbrands.sort!
+p ascending
+# Outputs ["Acura", "Buick", "Chevrolet", "Honda", "Lexus", "Toyota"]
+
+descending = carbrands.sort! do |a, b|
+  b <=> a # Return value is -1
+end
+p descending
+# Outputs ["Toyota", "Lexus", "Honda", "Chevrolet", "Buick", "Acura"]
+
+# What if we want to sort it by the length of each string?
+
+ascendinglength = carbrands.sort! do |a, b|
+  a.length <=> b.length # Return value is 1
+end
+p ascendinglength
+# Outputs ["Lexus", "Honda", "Buick", "Acura", "Toyota", "Chevrolet"]
+
+puts "----"
