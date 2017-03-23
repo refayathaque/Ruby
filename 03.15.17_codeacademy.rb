@@ -236,3 +236,84 @@ onehundred.each do |key, _|
 end
 
 puts "----"
+
+# A NIGHT AT THE MOVIES PROGRAM
+
+movies = {baywatch: 4.3, scarface: 4.9}
+
+  puts "What would you like to do? You can ADD, UPDATE, or DELETE movies from your rankings, you can also DISPLAY your rankings."
+
+loop do # Ensures program doesn't exit if user input != any of the choices below.
+
+  choice = gets.chomp.downcase
+
+case choice
+
+when "add"
+    puts "What movie would you like to add to your list of favorite movies?"
+        title = gets.chomp.intern # String#intern returns symbol corresponding to str
+    if movies.has_key?(title) # Hash#has_key? method
+        puts "This movie has already been added!"
+      break
+    else
+    puts "What is this movie's rating?"
+        rating = gets.chomp.to_f # String#to_f converts str to float
+      movies[title] = rating
+    puts "Added!"
+    end
+    # Displays key-value pairs of 'movies' hash to user. Reflection of what was
+    # done above.
+    movies.each do |title, rating|
+        puts "#{title.capitalize}: #{rating}/5" # Symbol#capitalize method
+      end
+    break
+
+when "update"
+    puts "What movie would you like to update?"
+        title = gets.chomp.intern # String#intern returns symbol corresponding to str
+    if movies[title] == nil # If key is NOT in hash
+        puts "Sorry but this movie is not in your list."
+      break
+    else
+      puts "What would you like to change this movie's rating to?"
+    rating = gets.chomp.to_f # String#to_f converts str to float
+      movies[title] = rating
+        puts "Updated!"
+      end
+    # Displays key-value pairs of 'movies' hash to user. Reflection of what was
+    # done above.
+    movies.each do |title, rating|
+        puts "#{title.capitalize}: #{rating}/5" # Symbol#capitalize method
+      end
+    break
+
+when "display"
+    movies.each do |title, rating|
+        puts "#{title.capitalize}: #{rating}/5" # Symbol#capitalize method
+      end
+    break
+
+when "delete"
+    puts "Which movie would you like to delete from your list?"
+        title = gets.chomp.intern # String#intern returns symbol corresponding to str
+    if movies[title] == nil # If key is NOT in hash
+        puts "Sorry but this movie is not in your list."
+      break
+    else
+        movies.delete(title)
+    puts "Deleted!"
+      end
+    # Displays key-value pairs of 'movies' hash to user. Reflection of what was
+    # done above.
+    movies.each do |title, rating|
+        puts "#{title.capitalize}: #{rating}/5" # Symbol#capitalize method
+      end
+    break
+
+else
+      puts "Please enter one of these options: ADD, UPDATE, DELETE, or DISPLAY"
+    end
+
+end # Ends the loop
+
+puts "----"
