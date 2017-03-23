@@ -317,3 +317,71 @@ else
 end # Ends the loop
 
 puts "----"
+
+# IF statements can be written in one line.
+
+# Instead of...
+
+if 5 > 4
+  puts "5 is greater than 4"
+end
+
+# We can write in one line... *** Note how we don't need an 'end'
+
+puts "5 is greater than 4" if 5 > 4
+
+# Same can be done with UNLESS...
+
+beverageconsumed = coffee
+puts "I'm always sleepy" unless beverageconsumed != coffee
+
+puts "----"
+
+# EXAMPLE OF A CASE STATEMENT
+
+puts "What language would you like to be greeted in?"
+greeting = gets.chomp.capitalize
+
+case greeting
+    when "English" then puts "Hello!"
+    when "French" then puts "Bonjour!"
+    when "German" then puts "Guten Tag!"
+    when "Finnish" then puts "Haloo!"
+    when "Mandarin" then puts "Ni Hao!"
+    when "Hindi" then puts "Namaste!"
+  else puts "Sorry I don't know the greeting for that language"
+end
+
+# CONDITIONAL ASSIGNMENT OPERATOR
+=begin
+||= (OR logical operator [||] and NORMAL assignment operator[=]) This assigns a
+variable if it hasn't already been assigned. E.g. if a variable is assigned 'nil',
+||= can be used to assign that variable some value. However, AFTER THAT, ||=
+can't be used to assign that variable a new value! If that variable is to be
+reassigned it must be done using the normal assignment operator (=). Let's do
+an example below.
+=end
+
+favorite_book = nil
+puts favorite_book # Outputs nothing
+
+favorite_book ||= "Cat's Cradle"
+puts favorite_book # Outputs "Cat's Cradle"
+
+favorite_book ||= "Why's (Poignant) Guide to Ruby"
+puts favorite_book # Outputs "Cat's Cradle"
+
+favorite_book = "Why's (Poignant) Guide to Ruby"
+puts favorite_book # Outputs "Why's (Poignant) Guide to Ruby"
+
+puts "----"
+
+# INTEGER#DOWNTO, INTEGER#UPTO, & STRING#UPTO (String Class DOESN'T HAVE .downto)
+
+"E".upto("H") do |letter|
+  puts letter # Outputs E F G H
+end
+
+32.upto(35) do |number|
+  puts number # Outputs 32 33 34 35
+end
