@@ -385,3 +385,9 @@ end
 32.upto(35) do |number|
   puts number # Outputs 32 33 34 35
 end
+
+puts "----"
+
+# OBJECT#RESPOND_TO?(:METHOD)
+# Takes a SYMBOL and returns 'true' if an object can receive that method and 'false'
+# otherwise. (Method goes in the parenthesis followed by ':')
