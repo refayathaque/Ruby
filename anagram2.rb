@@ -4,14 +4,14 @@ array = ['demo', 'none', 'tied', 'evil', 'dome','mode','live',
 hash = Hash.new
 
 array.each do |element|
-  key = element.split('').sort.join
+  key = element.chars.sort.join
   if hash.has_key?(key)
-    hash[key] << element
+    hash[key].push(element)
   else
     hash[key] = [element]
   end
 end
 
-hash.each do |_, value|
+hash.each do |key, value|
   p value
 end
