@@ -3,15 +3,15 @@ array = ['demo', 'none', 'tied', 'evil', 'dome','mode','live',
   'flow', 'neon']
 hash = Hash.new
 
-array.each do |element|
-  key = element.chars.sort.join
+array.map do |element|
+  key = element.split('').sort.join
   if hash.has_key?(key)
-    hash[key].push(element)
+    hash[key] << element
   else
     hash[key] = [element]
   end
 end
 
-hash.each do |key, value|
+hash.each do |_, value|
   p value
 end
