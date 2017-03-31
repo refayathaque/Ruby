@@ -3,7 +3,7 @@ array = ['demo', 'none', 'tied', 'evil', 'dome','mode','live',
   'flow', 'neon']
 hash = Hash.new
 
-array.map do |element|
+array.each do |element|
   key = element.split('').sort.join
   if hash.has_key?(key)
     hash[key] << element
