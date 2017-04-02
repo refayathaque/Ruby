@@ -414,3 +414,5 @@ prime(9)
 prime(11)
 prime(51)
 prime(97)
+
+puts "----"
