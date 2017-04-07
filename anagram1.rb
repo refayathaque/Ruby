@@ -12,6 +12,6 @@ array.each do |element|
   end
 end
 
-hash.each do |_, value|
+hash.each do |key, value|
   p value
 end
